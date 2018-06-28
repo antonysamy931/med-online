@@ -1,0 +1,11 @@
+{
+    "SecureConnectionEnable":true,
+    "HttpDefaultPort":8080,
+    "HttpsDefaultPort":8443,
+    "smtp-host":"",
+    "smtp-port":587,
+    "smtp-secure":false,
+    "smtp-gmail-enabled":false,
+    "from-address":"",
+    "auth-password":""
+}
