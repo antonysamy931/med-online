@@ -7,5 +7,8 @@
     "smtp-secure":false,
     "smtp-gmail-enabled":false,
     "from-address":"",
-    "auth-password":""
+    "auth-password":"",
+    "crypto-key":"asdfghjklqwertyuizxcvbnm",
+    "mongo-server":"http://localhost:27017/",
+    "med-database":"medonline"
 }
