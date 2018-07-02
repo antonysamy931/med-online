@@ -7,7 +7,7 @@ var Schema = mongoose.Schema;
 var AccountSchema = new Schema({
     _id: Schema.Types.ObjectId,
     Username: {type: String, index: true},
-    Password: {type: String},
+    Password: {type: String, set: cryptosystem.Encryption},
     User: {type: Schema.Types.ObjectId, ref="User"},
     CreatedDate: {type: Date, default: new Date()},
     CreatedBy: {type: String},
@@ -15,9 +15,9 @@ var AccountSchema = new Schema({
     UpdatedBy: {type: String}
 });
 
-AccountSchema.methods.SetPassword = function(password){
+/*AccountSchema.methods.SetPassword = function(password){
     this.Password = cryptosystem.Encryption(password);
-}
+}*/
 
 var Account = mongoose.model('Account', AccountSchema);
 
