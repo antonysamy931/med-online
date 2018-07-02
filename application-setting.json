@@ -9,6 +9,6 @@
     "from-address":"",
     "auth-password":"",
     "crypto-key":"asdfghjklqwertyuizxcvbnm",
-    "mongo-server":"http://localhost:27017/",
+    "mongo-server":"mongodb://localhost:27017/",
     "med-database":"medonline"
 }

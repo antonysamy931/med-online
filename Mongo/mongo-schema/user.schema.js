@@ -18,6 +18,7 @@ var UserSchema = new Schema({
         Office: {type: String}
     },
     UserId: {type: String, required: true, index: true, unique: true},
+    Role: {type: String, required: true},
     CreatedDate: {type: Date, default: new Date()},
     CreatedBy: {type: String},
     UpdatedDate: {type: Date, default: new Date()},
