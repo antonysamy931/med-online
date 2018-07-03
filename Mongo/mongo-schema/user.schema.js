@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
-    _id: {type: Schema.Types.ObjectId},
+    _id: {type: Schema.Types.ObjectId, default: new mongoose.Types.ObjectId},
     Name: { 
         First: {type: String, required: true, lowercase: true},
         Last: {type: String, required: true, lowercase: true},
@@ -10,7 +10,7 @@ var UserSchema = new Schema({
         Family: {type: String, lowercase: true}
     },
     Age: {type: Number},
-    Dob: {type: Date},
+    Dob: {type: String},
     Email: {type: String, required: true, unique: true},
     Phone: {
         Personal: {type: String},
@@ -21,10 +21,14 @@ var UserSchema = new Schema({
     Role: {type: String, required: true},
     CreatedDate: {type: Date, default: new Date()},
     CreatedBy: {type: String},
-    UpdatedDate: {type: Date, default: new Date()},
+    UpdatedDate: {type: Date},
     UpdatedBy: {type: String},
-    IsActive: {type: Boolean, default: false},
+    IsActive: {type: Boolean, default: true},
     IsDelete: {type: Boolean, default: false}    
+});
+
+UserSchema.pre('findOneAndUpdate',() => {
+    this.UpdatedDate = new Date();
 });
 
 var User = mongoose.model("User", UserSchema);

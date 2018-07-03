@@ -10,6 +10,10 @@ const applicaitonsettings = require(path.join(__dirname, '../application-setting
 
 const CertificateHelper = require(path.join(__dirname, '../Helpers/CertificateHelper'));
 
+const tokenMiddleware = require(path.join(__dirname,'../Helpers/req.middleware'));
+
+const MongoConnect = require(path.join(__dirname, '../Mongo/mongo-connect'));
+
 // Parsers
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
@@ -20,6 +24,12 @@ app.use(function(req, res, next) { //allow cross origin requests
         res.header("Access-Control-Allow-Credentials", true);
         next();
 });
+
+//Request middleware
+app.use(tokenMiddleware);
+
+//Connect mongodb
+MongoConnect.Connect();
 
 // Angular DIST output folder
 app.use(express.static(path.join(__dirname, '../dist/med-online/')));

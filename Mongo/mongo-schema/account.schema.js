@@ -1,23 +1,31 @@
 const mongoose = require('mongoose');
 const path = require('path');
-const cryptosystem = require(path.join(__dirname, '../Helpers/crypto.system'));
+const cryptosystem = require(path.join(__dirname, '../../Helpers/crypto.system'));
 
 var Schema = mongoose.Schema;
 
 var AccountSchema = new Schema({
-    _id: Schema.Types.ObjectId,
+    _id: {type: Schema.Types.ObjectId, default: new mongoose.Types.ObjectId},
     Username: {type: String, index: true},
     Password: {type: String, set: cryptosystem.Encryption},
-    User: {type: Schema.Types.ObjectId, ref="User"},
+    User: {type: Schema.Types.ObjectId, ref: "User"},
     CreatedDate: {type: Date, default: new Date()},
     CreatedBy: {type: String},
-    UpdatedDate: {type: Date, default: new Date()},
+    UpdatedDate: {type: Date},
     UpdatedBy: {type: String}
 });
 
-/*AccountSchema.methods.SetPassword = function(password){
-    this.Password = cryptosystem.Encryption(password);
-}*/
+AccountSchema.pre('find',function(){
+    this.populate('User');
+});
+
+AccountSchema.pre('findOne',function(){
+    this.populate('User');
+});
+
+AccountSchema.pre('findOneAndUpdate', function(){
+    this.UpdatedDate = new Date();
+})
 
 var Account = mongoose.model('Account', AccountSchema);
 

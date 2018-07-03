@@ -10,5 +10,6 @@
     "auth-password":"",
     "crypto-key":"asdfghjklqwertyuizxcvbnm",
     "mongo-server":"mongodb://localhost:27017/",
-    "med-database":"medonline"
+    "med-database":"medonline",
+    "jwt-key": "asdf1234!@#$"
 }
