@@ -1,13 +1,13 @@
 //const mongoose = require('mongoose');
 const path = require('path');
 //Connect
-const Connect = require(path.join(__dirname,'./mongo-connect'));
+//const Connect = require(path.join(__dirname,'./mongo-connect'));
 // Schemas import 
 //const Account = require(path.join(__dirname,'./mongo-schema/account.schema'));
-const User = require(path.join(__dirname,'./mongo-schema/user.schema'));
+//const User = require(path.join(__dirname,'./mongo-schema/user.schema'));
 
 //Operation import
-const Operation = require(path.join(__dirname,'./mongo-operation/operation'));
+//const Operation = require(path.join(__dirname,'./mongo-operation/operation'));
 
 //Dump data
 const Dump = require(path.join(__dirname,'./dump/initial-data'));
@@ -15,19 +15,20 @@ const Dump = require(path.join(__dirname,'./dump/initial-data'));
 //Logger import
 //const logger = require(path.join(__dirname,'../Helpers/Logger'));
 
-Connect.Connect();
+//Connect.Connect();
 Dump.Initialize();
 
 const AccountRepo = require(path.join(__dirname, './repository/account.repo'));
 const UserRepo = require(path.join(__dirname,'./repository/user.repo'));
-/*module.exports = {
+
+module.exports = {
     Account: AccountRepo,
     User: UserRepo
-}*/
+};
 
-AccountRepo.ValidateUser("medadmin","Pa$$word").then(function(result){
+/*AccountRepo.ValidateUser("medadmin","Pa$$word").then(function(result){
     console.log(result);
-})
+})*/
 
 
 //logger.Error("error test");

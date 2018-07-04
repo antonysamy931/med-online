@@ -14,6 +14,10 @@ const tokenMiddleware = require(path.join(__dirname,'../Helpers/req.middleware')
 
 const MongoConnect = require(path.join(__dirname, '../Mongo/mongo-connect'));
 
+//Controller imports
+const CaptchaController = require(path.join(__dirname,'../Controllers/captcha.controller'));
+const AccountController = require(path.join(__dirname,'../Controllers/account.controller'));
+
 // Parsers
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true}));
@@ -33,6 +37,10 @@ MongoConnect.Connect();
 
 // Angular DIST output folder
 app.use(express.static(path.join(__dirname, '../dist/med-online/')));
+
+//Api
+app.use('/api/v1/captcha', CaptchaController);
+app.use('/api/v1/account', AccountController);
 
 // Send all other requests to the Angular app
 app.get('*', (req, res) => {

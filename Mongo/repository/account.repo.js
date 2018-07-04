@@ -15,6 +15,6 @@ module.exports = {
                     logger.Error(error);
                     reject(error);
                 });
-        })        
+        });        
     }
 }
