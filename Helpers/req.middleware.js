@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken');
 var ApplicationSetting = require(path.join(__dirname, '../application-setting.json'));
 
 router.use(function(req, res, next){   
-    if(req.path.includes('api/v1') && !req.path.includes('login')){
+    if(req.path.includes('api/v1') && !req.path.includes('login') && !req.path.includes('getcaptcha')){
         let authorization = req.header('Authorization');
         if(!authorization){
             res.status(401).json('UnAuthorized User.');
