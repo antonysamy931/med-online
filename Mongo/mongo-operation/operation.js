@@ -26,14 +26,13 @@ module.exports = {
         });
     },
     FindOne: function(type, query){
-        return new Promise(function(resolve, reject){
-            console.log(query);
+        return new Promise(function(resolve, reject){    
             type.
             findOne(query).
             exec(function(error, result){
-                if(error){
+                if(error){                    
                     reject(error);
-                }else{
+                }else{                                      
                     resolve(result);
                 }
             });

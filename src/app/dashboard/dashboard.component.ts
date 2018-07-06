@@ -10,7 +10,8 @@ import { AuthService } from '../Service/auth/auth.service';
 })
 export class DashboardComponent extends Common implements OnInit {
 
-  constructor(public router: Router) {
+  constructor(public router: Router,
+    private authService: AuthService) {
     super(router);
    }
 

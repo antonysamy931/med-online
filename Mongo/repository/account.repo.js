@@ -7,14 +7,14 @@ const logger = require(path.join(__dirname, '../../Helpers/Logger'));
 module.exports = {
     ValidateUser: (username, password) => {
         return new Promise((resolve, reject) => {
-            password = CryptoSystem.Encryption(password);
+            password = CryptoSystem.Encryption(password);            
             Operation.FindOne(Account, 
-                ({'Username':username})).then((result) => {
+                ({'Username':username,'Password': password})).then((result) => {                    
                     resolve(result);
                 }, (error) => {
                     logger.Error(error);
                     reject(error);
-                });
+                });                
         });        
     }
 }

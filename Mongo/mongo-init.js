@@ -16,7 +16,7 @@ const Dump = require(path.join(__dirname,'./dump/initial-data'));
 //const logger = require(path.join(__dirname,'../Helpers/Logger'));
 
 //Connect.Connect();
-Dump.Initialize();
+//Dump.Initialize();
 
 const AccountRepo = require(path.join(__dirname, './repository/account.repo'));
 const UserRepo = require(path.join(__dirname,'./repository/user.repo'));

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { MadMaterialModule } from './Module/mad-material/mad-material.module';
 import { MedOnlineRouterModule } from './Module/med-online-router/med-online-router.module';
@@ -27,7 +28,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MedOnlineRouterModule,        
     MadMaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxSpinnerModule     
   ],
   providers: [],
   bootstrap: [ AppComponent ]

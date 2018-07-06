@@ -7,7 +7,7 @@ var Schema = mongoose.Schema;
 var AccountSchema = new Schema({
     _id: {type: Schema.Types.ObjectId, default: new mongoose.Types.ObjectId},
     Username: {type: String, index: true},
-    Password: {type: String, set: cryptosystem.Encryption},
+    Password: {type: String},
     User: {type: Schema.Types.ObjectId, ref: "User"},
     CreatedDate: {type: Date, default: new Date()},
     CreatedBy: {type: String},

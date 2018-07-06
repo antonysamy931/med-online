@@ -1,3 +1,10 @@
 <p>
   dashboard works!
 </p>
+<span *ngIf="authService.IsLoggedIn()">
+  {{authService.GetUserDisplayName()}}
+</span> 
+
+<div *ngIf="authService.IsLoggedIn()">
+  <button (click)="Logout()">Logout</button>
+</div>

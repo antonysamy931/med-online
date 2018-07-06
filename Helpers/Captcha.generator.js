@@ -10,7 +10,8 @@ module.exports = {
                 fontSize: 32,
                 width: 120,
                 height: 60,
-                noise: 1
+                noise: 1,
+                color: false
             });
         }else{
             Captcha = SvgCaptcha.createMathExpr({
@@ -18,7 +19,8 @@ module.exports = {
                 height: 60,
                 width: 120,
                 noise: 3,
-                size: 6
+                size: 6,
+                color: false
             });
         }
         return Captcha;

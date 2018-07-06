@@ -13,4 +13,9 @@ export abstract class Common implements OnInit {
         }
     }
 
+    Logout(){
+        localStorage.clear();
+        this.router.navigateByUrl('/login');        
+    }
+
 }

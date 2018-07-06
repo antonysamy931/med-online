@@ -14,6 +14,8 @@ const tokenMiddleware = require(path.join(__dirname,'../Helpers/req.middleware')
 
 const MongoConnect = require(path.join(__dirname, '../Mongo/mongo-connect'));
 
+const MongoDump = require(path.join(__dirname, '../Mongo/dump/initial-data'));
+
 //Controller imports
 const CaptchaController = require(path.join(__dirname,'../Controllers/captcha.controller'));
 const AccountController = require(path.join(__dirname,'../Controllers/account.controller'));
@@ -34,6 +36,8 @@ app.use(tokenMiddleware);
 
 //Connect mongodb
 MongoConnect.Connect();
+//Initial data dump
+MongoDump.Initialize();
 
 // Angular DIST output folder
 app.use(express.static(path.join(__dirname, '../dist/med-online/')));
