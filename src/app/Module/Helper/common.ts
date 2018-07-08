@@ -1,5 +1,5 @@
 import { OnInit } from "@angular/core";
-import { AuthService } from "../../Service/auth/auth.service";
+import { AuthService } from "../../Service/Auth/auth.service";
 import { Router } from "@angular/router";
 
 export abstract class Common implements OnInit {

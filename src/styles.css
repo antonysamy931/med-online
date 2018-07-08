@@ -3,7 +3,6 @@
 @import '~material-design-icons/iconfont/material-icons.css';
 @import '~bootstrap/dist/css/bootstrap.min.css';
 body { 
-    margin: 0; 
-    background-image: url('./assets/images/Near_Moon.png');
+    margin: 0;     
 }
 /*https://webgradients.com/*/

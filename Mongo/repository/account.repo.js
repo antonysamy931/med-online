@@ -9,7 +9,7 @@ module.exports = {
         return new Promise((resolve, reject) => {
             password = CryptoSystem.Encryption(password);            
             Operation.FindOne(Account, 
-                ({'Username':username,'Password': password})).then((result) => {                    
+                ({'Username':username,'Password': password})).then((result) => {                                        
                     resolve(result);
                 }, (error) => {
                     logger.Error(error);

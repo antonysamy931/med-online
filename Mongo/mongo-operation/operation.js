@@ -26,13 +26,13 @@ module.exports = {
         });
     },
     FindOne: function(type, query){
-        return new Promise(function(resolve, reject){    
+        return new Promise(function(resolve, reject){                
             type.
             findOne(query).
             exec(function(error, result){
                 if(error){                    
                     reject(error);
-                }else{                                      
+                }else{                                                          
                     resolve(result);
                 }
             });

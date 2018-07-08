@@ -1,8 +1,12 @@
+body{
+    background-image: url('../../assets/images/Near_Moon.png');
+}
+
 .login{
     text-align: center;
     display: flex;
     align-items: center;
-    padding-top: 10%;
+    padding-top: 8%;
     padding-bottom: 40px;
 }
 

@@ -12,6 +12,9 @@ import { AppComponent } from './app.component';
 import { MyNavComponent } from './my-nav/my-nav.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { MedAdminDashboardComponent } from './med-admin-dashboard/med-admin-dashboard.component';
+import { MedOnlineNavbarComponent } from './med-online-navbar/med-online-navbar.component';
+
 
 
 @NgModule({
@@ -19,7 +22,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     AppComponent, 
     MyNavComponent,
     LoginComponent,
-    DashboardComponent
+    DashboardComponent,
+    MedAdminDashboardComponent,
+    MedOnlineNavbarComponent
   ],
   imports: [
     BrowserModule,  
@@ -29,7 +34,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MadMaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxSpinnerModule     
+    NgxSpinnerModule
   ],
   providers: [],
   bootstrap: [ AppComponent ]

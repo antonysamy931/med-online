@@ -6,6 +6,7 @@ const User = require(path.join(__dirname,'../mongo-schema/user.schema'));
 const Guid = require(path.join(__dirname,'../../Helpers/GuidBuilder'));
 const Operation = require(path.join(__dirname,'../mongo-operation/operation'));
 const logger = require(path.join(__dirname,'../../Helpers/Logger'));
+const Crypto = require(path.join(__dirname,'../../Helpers/crypto.system'));
 
 var UserModel = new User({
     _id: new mongoose.Types.ObjectId,
@@ -21,7 +22,7 @@ var UserModel = new User({
 var AccountModel = new Account({
     _id: new mongoose.Types.ObjectId,
     Username: "medadmin",
-    Password: "Pa$$word",
+    Password: Crypto.Encryption("Pa$$word"),
     User: UserModel._id
 });
 

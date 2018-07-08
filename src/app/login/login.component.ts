@@ -59,6 +59,8 @@ export class LoginComponent extends Common implements OnInit, AfterViewInit {
         this.router.navigateByUrl('/dashboard');
       }, (error) => {
         console.log(error);
+        alert(error.error);
+        this.LoadCaptcha();
         this.spinner.hide();
       }, () => {
         this.spinner.hide();
