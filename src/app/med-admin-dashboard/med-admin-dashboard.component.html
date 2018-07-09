@@ -1,14 +1,12 @@
 <div class="grid-container">
   <h1 class="mat-h1">Dashboard</h1>
+
   <mat-grid-list cols="4" rowHeight="250px">
-    
-  </mat-grid-list>
-  <mat-grid-list cols="2" rowHeight="350px">
-    <mat-grid-tile *ngFor="let card of cards" [colspan]="card.cols" [rowspan]="card.rows">
+    <mat-grid-tile [colspan]="1" [rowspan]="1">      
       <mat-card class="dashboard-card">
         <mat-card-header>
           <mat-card-title>
-            {{card.title}}
+            test 1
             <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
               <mat-icon>more_vert</mat-icon>
             </button>
@@ -20,6 +18,126 @@
         </mat-card-header>
         <mat-card-content class="dashboard-card-content">
           <div>Card Content Here</div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            test 1
+            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>Expand</button>
+              <button mat-menu-item>Remove</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <div>Card Content Here</div>
+        </mat-card-content>
+      </mat-card>      
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            test 1
+            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>Expand</button>
+              <button mat-menu-item>Remove</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <div>Card Content Here</div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">      
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            test 1
+            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>Expand</button>
+              <button mat-menu-item>Remove</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <div>Card Content Here</div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <mat-grid-list cols="2" rowHeight="300px">
+    
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <mat-card style="width: 94%;">
+        <mat-card-header>
+            <mat-card-title>              
+              <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu" xPosition="before">
+                <button mat-menu-item>View</button>
+                <button mat-menu-item>Refresh</button>
+              </mat-menu>
+            </mat-card-title>
+          </mat-card-header>
+        <mat-card-content>
+          <app-customer-chart></app-customer-chart>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+    
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <mat-card style="width: 94%;">
+          <mat-card-header>
+            <mat-card-title>              
+              <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu" xPosition="before">
+                <button mat-menu-item>View</button>
+                <button mat-menu-item>Refresh</button>
+              </mat-menu>
+            </mat-card-title>
+          </mat-card-header>
+        <mat-card-content>
+          <app-customer-chart></app-customer-chart>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+
+  </mat-grid-list> 
+
+  <mat-grid-list cols="1" rowHeight="550px">
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <mat-card style="width: 97%;">
+          <mat-card-header>
+            <mat-card-title>              
+              <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu" xPosition="before">
+                <button mat-menu-item>View</button>
+                <button mat-menu-item>Refresh</button>
+              </mat-menu>
+            </mat-card-title>
+          </mat-card-header>
+        <mat-card-content>
+          <app-sales-chart></app-sales-chart>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>

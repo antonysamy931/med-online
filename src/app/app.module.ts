@@ -4,6 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { ChartsModule } from 'ng2-charts/ng2-charts';
 
 import { MadMaterialModule } from './Module/mad-material/mad-material.module';
 import { MedOnlineRouterModule } from './Module/med-online-router/med-online-router.module';
@@ -14,8 +15,8 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MedAdminDashboardComponent } from './med-admin-dashboard/med-admin-dashboard.component';
 import { MedOnlineNavbarComponent } from './med-online-navbar/med-online-navbar.component';
-
-
+import { CustomerChartComponent } from './charts/customer-chart/customer-chart.component';
+import { SalesChartComponent } from './charts/sales-chart/sales-chart.component';
 
 @NgModule({
   declarations: [     
@@ -24,7 +25,9 @@ import { MedOnlineNavbarComponent } from './med-online-navbar/med-online-navbar.
     LoginComponent,
     DashboardComponent,
     MedAdminDashboardComponent,
-    MedOnlineNavbarComponent
+    MedOnlineNavbarComponent,
+    CustomerChartComponent,
+    SalesChartComponent
   ],
   imports: [
     BrowserModule,  
@@ -34,9 +37,12 @@ import { MedOnlineNavbarComponent } from './med-online-navbar/med-online-navbar.
     MadMaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
+
+//https://valor-software.com/ng2-charts/

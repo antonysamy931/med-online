@@ -22,15 +22,16 @@
               "src/favicon.ico",
               "src/assets"
             ],
-            "styles": [
+            "styles": [      
               {
-                "input": "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
-              },
+                "input": "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"                
+              },                     
               "src/styles.css"              
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.js",
-              "node_modules/hammerjs/hammer.js"              
+              "node_modules/hammerjs/hammer.js",
+              "node_modules/chart.js/dist/Chart.bundle.js"             
             ]
           },
           "configurations": {
@@ -85,7 +86,8 @@
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.js",
-              "node_modules/hammerjs/hammer.js"              
+              "node_modules/hammerjs/hammer.js",
+              "node_modules/chart.js/src/chart.js" 
             ],
             "assets": [
               "src/favicon.ico",

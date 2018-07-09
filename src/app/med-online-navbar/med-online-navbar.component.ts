@@ -23,7 +23,11 @@ export class MedOnlineNavbarComponent {
     @ViewChild(MatMenuTrigger) usermenu: MatMenuTrigger;
 
     OpenUserMenu(){
-      this.usermenu.openMenu();
+      this.isHandset$.subscribe((result) =>{
+        if(!result){
+          this.usermenu.openMenu();
+        }
+      });
     }
     
     Logout(){
