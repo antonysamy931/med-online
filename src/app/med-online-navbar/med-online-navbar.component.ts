@@ -1,17 +1,18 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints, BreakpointState } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { MatMenuTrigger } from '@angular/material';
 import { AuthService } from '../Service/Auth/auth.service';
 import { Router } from '@angular/router';
+import { Common } from '../Module/Helper/common';
 
 @Component({
   selector: 'med-online-navbar',
   templateUrl: './med-online-navbar.component.html',
   styleUrls: ['./med-online-navbar.component.css']
 })
-export class MedOnlineNavbarComponent {
+export class MedOnlineNavbarComponent extends Common implements OnInit {
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -19,7 +20,9 @@ export class MedOnlineNavbarComponent {
     );
     
   constructor(private breakpointObserver: BreakpointObserver, 
-    private authService: AuthService, private router: Router) {}
+    private authService: AuthService, public router: Router) {
+      super(router);
+    }
     @ViewChild(MatMenuTrigger) usermenu: MatMenuTrigger;
 
     OpenUserMenu(){
@@ -29,10 +32,9 @@ export class MedOnlineNavbarComponent {
         }
       });
     }
-    
-    Logout(){
-      localStorage.clear();
-      this.router.navigateByUrl('/login');
-    }
+
+    ngOnInit(){
+      super.ngOnInit();
+    }    
 
   }

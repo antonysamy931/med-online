@@ -18,4 +18,11 @@ export abstract class Common implements OnInit {
         this.router.navigateByUrl('/login');        
     }
 
+    Redirect(url){
+        console.log(url);
+        setTimeout(() => {
+            this.router.navigateByUrl(url);
+        }, 1000);        
+    }
+
 }

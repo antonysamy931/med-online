@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Common } from '../Module/Helper/common';
 import { Router } from '@angular/router';
+import { CustomerChartComponent } from '../charts/customer-chart/customer-chart.component';
 
 @Component({
   selector: 'med-admin-dashboard',
@@ -15,11 +16,17 @@ export class MedAdminDashboardComponent extends Common implements OnInit {
     { title: 'Card 4', cols: 1, rows: 1 }
   ];
 
+  @ViewChild('customerchart') customerchart: CustomerChartComponent;
+
   constructor(public router: Router){
     super(router);
   }
 
   ngOnInit(){
     super.ngOnInit();
+  }
+
+  ChartRefresh(){
+    this.customerchart.chartRefresh();
   }
 }

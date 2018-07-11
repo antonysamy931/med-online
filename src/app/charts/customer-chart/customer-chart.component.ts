@@ -30,4 +30,11 @@ export class CustomerChartComponent extends Common implements OnInit {
     console.log(e);
   }
 
+  public chartRefresh():void{    
+    var x = this.pieChartData[0] + 10;
+    var y = this.pieChartData[1] + 10;
+    var z = this.pieChartData[2] + 10;    
+    this.pieChartData = [x, y, z];    
+  }
+
 }

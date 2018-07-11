@@ -19,6 +19,7 @@ import {
   MatPaginatorModule,
   MatGridListModule,
   MatMenuModule,
+  MatSortModule
 } from '@angular/material';
 
 @NgModule({
@@ -43,7 +44,8 @@ import {
     MatTableModule,
     MatPaginatorModule,
     MatMenuModule,
-    MatGridListModule
+    MatGridListModule,
+    MatSortModule
   ],
   declarations: []
 })

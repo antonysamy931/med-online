@@ -6,4 +6,9 @@
 body { 
     margin: 0;     
 }
+.Active{    
+    font-weight: bold;
+    text-transform: capitalize;
+    text-decoration: underline;
+}
 /*https://webgradients.com/*/

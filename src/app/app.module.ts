@@ -17,6 +17,15 @@ import { MedAdminDashboardComponent } from './med-admin-dashboard/med-admin-dash
 import { MedOnlineNavbarComponent } from './med-online-navbar/med-online-navbar.component';
 import { CustomerChartComponent } from './charts/customer-chart/customer-chart.component';
 import { SalesChartComponent } from './charts/sales-chart/sales-chart.component';
+import { ViewProfileComponent } from './view-profile/view-profile.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
+import { AddPharmaComponent } from './add-pharma/add-pharma.component';
+import { UpdatePharmaComponent } from './update-pharma/update-pharma.component';
+import { PharmasComponent } from './pharmas/pharmas.component';
+import { PharmaUsersComponent } from './pharma-users/pharma-users.component';
+import { PharmaDetailComponent } from './pharma-detail/pharma-detail.component';
+import { OperationsComponent } from './operations/operations.component';
+import { MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
 
 @NgModule({
   declarations: [     
@@ -27,7 +36,15 @@ import { SalesChartComponent } from './charts/sales-chart/sales-chart.component'
     MedAdminDashboardComponent,
     MedOnlineNavbarComponent,
     CustomerChartComponent,
-    SalesChartComponent
+    SalesChartComponent,
+    ViewProfileComponent,
+    ChangePasswordComponent,
+    AddPharmaComponent,
+    UpdatePharmaComponent,
+    PharmasComponent,
+    PharmaUsersComponent,
+    PharmaDetailComponent,
+    OperationsComponent    
   ],
   imports: [
     BrowserModule,  
@@ -38,7 +55,10 @@ import { SalesChartComponent } from './charts/sales-chart/sales-chart.component'
     FormsModule,
     ReactiveFormsModule,
     NgxSpinnerModule,
-    ChartsModule
+    ChartsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
   ],
   providers: [],
   bootstrap: [ AppComponent ]

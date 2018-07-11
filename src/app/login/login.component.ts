@@ -56,7 +56,7 @@ export class LoginComponent extends Common implements OnInit, AfterViewInit {
       this.loginService.AuthenticateUser(this.loginUser).subscribe((data) => {        
         this.spinner.hide();
         localStorage.setItem("LoggedInUserData",JSON.stringify(data));
-        this.router.navigateByUrl('/dashboard');
+        window.location.replace("/");
       }, (error) => {
         console.log(error);
         alert(error.error);

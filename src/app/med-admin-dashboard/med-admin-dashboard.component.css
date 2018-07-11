@@ -19,3 +19,27 @@
 .dashboard-card-content {
   text-align: center;
 }
+
+.custom-show-card{
+  padding:0!important;
+}
+
+.custom-show-card > .mat-card-header
+{
+  background: #3f51b5;  
+  padding: 7% 7% 0% 19% !important;
+  color: #fff;
+}
+
+.mat-card-title
+{
+  font-size: 14px !important;
+  font-weight: bold !important;  
+  text-transform: capitalize !important;
+}
+.custom-show-card-content{
+  padding: 5%;
+  font-size: 50px;
+  font-family: cursive;
+  color: #3f51b5;
+}
