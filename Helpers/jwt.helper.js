@@ -1,5 +1,6 @@
 const path = require('path');
 const JWT = require('jsonwebtoken');
+const Promise = require('bluebird');
 
 const ApplicationSetting = require(path.join(__dirname, '../application-setting.json'));
 
@@ -11,5 +12,21 @@ module.exports = {
     },
     GetData: (token) => {
         return JWT.verify(token, JWT_KEY);
+    },
+    GenerateResetToken: (data) => {
+        return JWT.sign(JSON.stringify(data), JWT_KEY, {
+            expiresIn: '24h'
+        });
+    },
+    VerifyResetToken: (token) => {
+        return new Promise(function(resolve, reject){
+            JWT.verify(token,JWT_KEY,(err, decoded) => {
+                if(err){
+                    reject(err);
+                }else{
+                    resolve(decoded);
+                }
+            })
+        });
     }
 }

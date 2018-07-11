@@ -26,6 +26,7 @@ import { PharmaUsersComponent } from './pharma-users/pharma-users.component';
 import { PharmaDetailComponent } from './pharma-detail/pharma-detail.component';
 import { OperationsComponent } from './operations/operations.component';
 import { MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 
 @NgModule({
   declarations: [     
@@ -44,7 +45,8 @@ import { MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/mate
     PharmasComponent,
     PharmaUsersComponent,
     PharmaDetailComponent,
-    OperationsComponent    
+    OperationsComponent,
+    ForgetPasswordComponent    
   ],
   imports: [
     BrowserModule,  

@@ -1,3 +1,4 @@
+const Promise = require('bluebird');
 const nodemailer = require('nodemailer');
 const path = require('path');
 
@@ -12,11 +13,13 @@ mailhelper.GetTransporter = function(){
 }
 
 mailhelper.SendMail = function(mail){
-    Transporter.sendMail(mail,(err, info) => {
-        if(err){
-            console.log(err)
-        }else{
-            console.log(info);
-        }
-    });
+    return new Promise((resolve, reject) => {
+        Transporter.sendMail(mail,(err, info) => {
+            if(err){
+                reject(err);
+            }else{
+                resolve(info);
+            }
+        });
+    });    
 }

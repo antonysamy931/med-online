@@ -12,6 +12,7 @@ import { AddPharmaComponent } from '../../add-pharma/add-pharma.component';
 import { UpdatePharmaComponent } from '../../update-pharma/update-pharma.component';
 import { PharmaDetailComponent } from '../../pharma-detail/pharma-detail.component';
 import { OperationsComponent } from '../../operations/operations.component';
+import { ForgetPasswordComponent } from '../../forget-password/forget-password.component';
 
 const pageRoutes: Routes = [
   {path: '', redirectTo:'/dashboard', pathMatch: 'full'},
@@ -25,8 +26,8 @@ const pageRoutes: Routes = [
   {path: 'create-pharma', component: AddPharmaComponent},
   {path: 'edit-pharma', component: UpdatePharmaComponent},
   {path: 'view-pharma', component: PharmaDetailComponent},
-  {path: 'operations', component: OperationsComponent}
-  
+  {path: 'operations', component: OperationsComponent},
+  {path: 'forgot-password', component: ForgetPasswordComponent}  
 ]
 
 @NgModule({
