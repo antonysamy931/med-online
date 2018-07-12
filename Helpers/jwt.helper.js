@@ -14,8 +14,10 @@ module.exports = {
         return JWT.verify(token, JWT_KEY);
     },
     GenerateResetToken: (data) => {
-        return JWT.sign(JSON.stringify(data), JWT_KEY, {
-            expiresIn: '24h'
+        return JWT.sign({
+            data: JSON.stringify(data)
+            }, JWT_KEY, {
+            expiresIn: '1d'
         });
     },
     VerifyResetToken: (token) => {

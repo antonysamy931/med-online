@@ -16,6 +16,10 @@ export class AuthService {
     return User.Name.Last + ", " + User.Name.First;
   }
 
+  GetAuthToken() : string {
+    return localStorage.getItem('LoggedInUserData') ? 'bearer ' + this.GetUserData().Token : "";
+  }
+
   private GetUserData() : any {
     var UserData = localStorage.getItem('LoggedInUserData');
     return JSON.parse(UserData);

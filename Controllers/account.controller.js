@@ -29,25 +29,35 @@ Router.post('/forgetpassword',function(req,res,next){
     var ResetTemplate = HtmlReader.ResetpasswordTemplate();
     var Url = req.protocol+"://"+req.get('host');
     
-    Repository.User.GetUserByEmail('medonlice@help.com').then((result) => {
-        res.status(200).json(result);
+    Repository.User.GetUserByEmail(req.body.Email).then((result) => {
+        var data = {
+            Name : result.Name.Last + " " + result.Name.First,
+            obj : result
+        }
+        ResetTemplate = HtmlUtil.ResetpassowrdMapper(ResetTemplate, data, Url);
+        let mailOptions = {
+            from: ApplicationSettings['from-address'], 
+            to: req.body.Email,
+            subject: 'Resetpassword',
+            html: ResetTemplate
+        };
+        MailHelper.SendMail(mailOptions).then((mail) => {
+            res.status(200).json(mail);
+        }, (error) => {
+            res.status(500).json(error);
+        });        
     },        
     (error) => {
         res.status(404).json("User not found");
-    });
+    });    
+});
 
-    let mailOptions = {
-        from: ApplicationSettings['from-address'], // sender address
-        to: req.body.Email, // list of receivers
-        subject: 'Resetpassword', // Subject line        
-        html: '<b>Hello world?</b>' // html body
-    };
-
-    /*MailHelper.SendMail(mailOptions).then((result) => {
-        res.status(200).json(result);
-    }, (error) => {
+Router.post('/verifytoken',function(req,res,next){
+    jwt.VerifyResetToken(req.body.Token).then(function(result){
+        res.status(200).json('Verified');
+    },function(error){
         res.status(500).json(error);
-    });*/
+    })
 });
 
 module.exports = Router;

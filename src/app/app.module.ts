@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
@@ -27,6 +27,8 @@ import { PharmaDetailComponent } from './pharma-detail/pharma-detail.component';
 import { OperationsComponent } from './operations/operations.component';
 import { MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { AuthInterceptor } from './Module/Helper/auth-interceptor';
 
 @NgModule({
   declarations: [     
@@ -46,7 +48,8 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
     PharmaUsersComponent,
     PharmaDetailComponent,
     OperationsComponent,
-    ForgetPasswordComponent    
+    ForgetPasswordComponent,
+    ResetPasswordComponent    
   ],
   imports: [
     BrowserModule,  
@@ -62,7 +65,11 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
     MatPaginatorModule,
     MatSortModule,
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }
