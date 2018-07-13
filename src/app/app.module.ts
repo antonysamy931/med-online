@@ -5,6 +5,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { CompareValidatorModule } from 'angular-compare-validator';
 
 import { MadMaterialModule } from './Module/mad-material/mad-material.module';
 import { MedOnlineRouterModule } from './Module/med-online-router/med-online-router.module';
@@ -25,12 +26,18 @@ import { PharmasComponent } from './pharmas/pharmas.component';
 import { PharmaUsersComponent } from './pharma-users/pharma-users.component';
 import { PharmaDetailComponent } from './pharma-detail/pharma-detail.component';
 import { OperationsComponent } from './operations/operations.component';
-import { MatTableModule, MatPaginatorModule, MatSortModule } from '@angular/material';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { AuthInterceptor } from './Module/Helper/auth-interceptor';
+import { ForgotMessageComponent } from './forgot-message/forgot-message.component';
+import { AlertMessageComponent } from './alert-message/alert-message.component';
 
 @NgModule({
+  entryComponents:[
+    ForgetPasswordComponent,
+    ForgotMessageComponent,
+    AlertMessageComponent
+  ],
   declarations: [     
     AppComponent, 
     MyNavComponent,
@@ -49,7 +56,9 @@ import { AuthInterceptor } from './Module/Helper/auth-interceptor';
     PharmaDetailComponent,
     OperationsComponent,
     ForgetPasswordComponent,
-    ResetPasswordComponent    
+    ResetPasswordComponent,
+    ForgotMessageComponent,
+    AlertMessageComponent
   ],
   imports: [
     BrowserModule,  
@@ -61,9 +70,7 @@ import { AuthInterceptor } from './Module/Helper/auth-interceptor';
     ReactiveFormsModule,
     NgxSpinnerModule,
     ChartsModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
+    CompareValidatorModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

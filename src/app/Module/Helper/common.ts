@@ -7,8 +7,10 @@ export abstract class Common implements OnInit {
     }
     private auth: AuthService = new AuthService();    
 
-    ngOnInit(){
-        if(!this.auth.IsLoggedIn() && this.router.url.indexOf('reset-password') > -1){
+    ngOnInit(){        
+        if(!this.auth.IsLoggedIn() 
+        && window.location.pathname.split('/').indexOf('reset-password') == -1
+        && window.location.pathname.split('/').indexOf('forgot-password') == -1){
             this.router.navigateByUrl('/login');
         }
     }

@@ -24,7 +24,7 @@ Router.post('/login',function(req, res, next){
     });    
 });
 
-Router.post('/forgetpassword',function(req,res,next){
+Router.post('/forgotpassword',function(req,res,next){
 
     var ResetTemplate = HtmlReader.ResetpasswordTemplate();
     var Url = req.protocol+"://"+req.get('host');

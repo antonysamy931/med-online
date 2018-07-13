@@ -14,7 +14,7 @@ var UserModel = new User({
         First: "Medical",
         Last: "Admin"        
     },        
-    Email: "medonlice@help.com",    
+    Email: "medonline@help.com",    
     UserId: Guid.UserId(),
     Role: Role.med_admin.value    
 });

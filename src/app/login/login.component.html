@@ -1,11 +1,11 @@
 <div class="login">
   <div class="login-card">
-  <mat-card>    
+  <mat-card style="box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);">    
     <mat-card-header>
       <mat-card-title>
         <div><img src="../../assets/images/medical-logo.jpg" width="20%"/></div>
         <div class="login-title">
-            <span>Welcome! please signin</span>
+            <span>Welcome! please sign in</span>
         </div>
         
       </mat-card-title>  
@@ -37,6 +37,8 @@
       <button style="width:93%;" mat-raised-button color="primary" 
       [disabled]="username.invalid || password.invalid || captcha.invalid"
       (click)="Login()">Login</button>
+      <button color="primary" style="width:93%; margin-top: 2%;"
+      mat-raised-button routerLink="/forgot-password">Forgot Password</button>
     </mat-card-actions>
   </mat-card>
   </div>

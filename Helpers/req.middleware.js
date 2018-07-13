@@ -9,7 +9,7 @@ var ApplicationSetting = require(path.join(__dirname, '../application-setting.js
 router.use(function(req, res, next){   
     if(req.path.includes('api/v1') && !req.path.includes('login') 
         && !req.path.includes('getcaptcha')
-        && !req.path.includes('forgetpassword')
+        && !req.path.includes('forgotpassword')
         && !req.path.includes('verifytoken')){
         let authorization = req.header('Authorization');
         if(!authorization){
