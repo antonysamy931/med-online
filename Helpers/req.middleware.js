@@ -10,7 +10,8 @@ router.use(function(req, res, next){
     if(req.path.includes('api/v1') && !req.path.includes('login') 
         && !req.path.includes('getcaptcha')
         && !req.path.includes('forgotpassword')
-        && !req.path.includes('verifytoken')){
+        && !req.path.includes('verifytoken')
+        && !req.path.includes('resetpassword')){
         let authorization = req.header('Authorization');
         if(!authorization){
             res.status(401).json('UnAuthorized User.');

@@ -1,6 +1,4 @@
 const mongoose = require('mongoose');
-const path = require('path');
-const cryptosystem = require(path.join(__dirname, '../../Helpers/crypto.system'));
 
 var Schema = mongoose.Schema;
 

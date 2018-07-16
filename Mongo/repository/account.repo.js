@@ -16,5 +16,17 @@ module.exports = {
                     reject(error);
                 });                
         });        
+    },
+    UpdatePassword: (password, userid) => {
+        return new Promise((resolve, reject) => {
+            password = CryptoSystem.Encryption(password);   
+            Operation.UpdateOne(Account, {'User': userid}, 
+            {'Password': password}).then((result) => {                
+                resolve(result);
+            }, (error) => {
+                logger.Error(error);                
+                reject(error);
+            });
+        });
     }
 }

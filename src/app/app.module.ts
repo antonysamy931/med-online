@@ -11,7 +11,6 @@ import { MadMaterialModule } from './Module/mad-material/mad-material.module';
 import { MedOnlineRouterModule } from './Module/med-online-router/med-online-router.module';
 
 import { AppComponent } from './app.component';
-import { MyNavComponent } from './my-nav/my-nav.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MedAdminDashboardComponent } from './med-admin-dashboard/med-admin-dashboard.component';
@@ -39,8 +38,7 @@ import { AlertMessageComponent } from './alert-message/alert-message.component';
     AlertMessageComponent
   ],
   declarations: [     
-    AppComponent, 
-    MyNavComponent,
+    AppComponent,     
     LoginComponent,
     DashboardComponent,
     MedAdminDashboardComponent,

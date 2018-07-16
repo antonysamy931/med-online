@@ -60,4 +60,17 @@ Router.post('/verifytoken',function(req,res,next){
     })
 });
 
+Router.post('/resetpassword', function(req, res, next){
+    jwt.VerifyResetToken(req.body.Token).then(function(result){
+        var Info = JSON.parse(result.data);                
+        Repository.Account.UpdatePassword(req.body.Password, Info.obj._id).then((updateresult) => {            
+            res.status(200).json("Record updated successfully.");
+        }, (er) => {            
+            res.status(500).json(er);
+        })        
+    },function(error){
+        res.status(500).json(error);
+    })
+});
+
 module.exports = Router;

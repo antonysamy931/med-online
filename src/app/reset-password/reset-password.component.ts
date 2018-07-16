@@ -7,6 +7,7 @@ import { CaptchaService } from '../Service/Captcha/captcha.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { FormControl, Validators } from '@angular/forms';
 import { MatchPassword } from '../Validator/compare-validator';
+import { ResetPasswordService } from '../Service/Reset/reset-password.service';
 
 @Component({
   selector: 'app-reset-password',
@@ -19,14 +20,15 @@ export class ResetPasswordComponent implements OnInit, AfterViewInit {
   Captcha: any;
   CaptchaSVG: any;
   hide: boolean = true;
-  hideCompare: boolean = true;
+  hideCompare: boolean = true;  
 
   constructor(private router: ActivatedRoute, 
     private forgotService: ForgotPasswordService, 
     private route: Router, 
     private matDialog: MatDialog,
     private captchaService: CaptchaService,    
-    private spinner: NgxSpinnerService) { }
+    private spinner: NgxSpinnerService,
+    private resetService: ResetPasswordService) { }
 
   password = new FormControl('password',[Validators.required]);
   comparepassword = new FormControl('comparepassword',[Validators.required]);
@@ -76,12 +78,30 @@ export class ResetPasswordComponent implements OnInit, AfterViewInit {
     this.forgotService.VerifyToken(this.Token).subscribe((data) =>{
       console.log(data);
     }, (error) => {
-      this.OpenDialog("Invalid token. Try to reset again.", false);
+      this.OpenDialog("Invalid token. Try to reset again.", true);
     })
   }
 
-  Reset(): void{
-
+  Reset(): void{    
+    if(this.resetPassword.Password == this.resetPassword.ComparePassword){
+      if(this.Captcha.text == this.resetPassword.Captcha) {
+        this.spinner.show();
+        this.resetService.UpdatePassword(this.Token, this.resetPassword.Password).subscribe((data) =>{
+          this.spinner.hide();
+          this.OpenDialog('Password reset successfully. Pleasee login using this password', true);
+        }, (error) => {
+          this.spinner.hide();
+          this.OpenDialog(error, false);          
+        })
+      } else {
+        this.OpenDialog("Invalid Captcha. Try again.", false);
+        this.resetPassword.Captcha = "";
+        this.captcha.reset();
+        this.LoadCaptcha();
+      }
+    } else {      
+      this.OpenDialog("Password and Comparepassword not matched.", false);
+    }
   }
 
 }
