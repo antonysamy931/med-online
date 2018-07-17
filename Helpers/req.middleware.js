@@ -17,10 +17,10 @@ router.use(function(req, res, next){
             res.status(401).json('UnAuthorized User.');
         }else{
             let token = authorization.split(' ')[1];          
-            var data = jwt.verify(token, ApplicationSetting.jwt-key); 
+            var data = jwt.verify(token, ApplicationSetting["jwt-key"]); 
             req.body.AuthorizeData = data;
             req.body.CreatedBy = req.body.AuthorizeData.UserId;
-            req.body.UpdatedBy = req.body.AuthorizeData.UserId;
+            req.body.UpdatedBy = req.body.AuthorizeData.UserId;            
             next();
         }
     }else{

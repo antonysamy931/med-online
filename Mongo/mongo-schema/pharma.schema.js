@@ -15,7 +15,12 @@ var PharmaSchema = new Schema({
 
 PharmaSchema.pre('findOneAndUpdate', function(){
     this.UpdatedDate = new Date();
-})
+});
+
+PharmaSchema.pre('find',function(){
+    this.populate('Address');
+});
+
 
 var Pharma = mongoose.model('Pharma', PharmaSchema);
 

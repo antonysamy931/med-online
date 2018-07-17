@@ -20,10 +20,12 @@ const Dump = require(path.join(__dirname,'./dump/initial-data'));
 
 const AccountRepo = require(path.join(__dirname, './repository/account.repo'));
 const UserRepo = require(path.join(__dirname,'./repository/user.repo'));
+const PharmaRepo = require(path.join(__dirname, './repository/pharma.repo'));
 
 module.exports = {
     Account: AccountRepo,
-    User: UserRepo
+    User: UserRepo,
+    Pharma: PharmaRepo
 };
 
 /*AccountRepo.ValidateUser("medadmin","Pa$$word").then(function(result){

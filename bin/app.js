@@ -19,6 +19,7 @@ const MongoDump = require(path.join(__dirname, '../Mongo/dump/initial-data'));
 //Controller imports
 const CaptchaController = require(path.join(__dirname,'../Controllers/captcha.controller'));
 const AccountController = require(path.join(__dirname,'../Controllers/account.controller'));
+const PharmaController = require(path.join(__dirname,'../Controllers/pharma.controller'));
 
 // Parsers
 app.use(bodyParser.json());
@@ -45,6 +46,7 @@ app.use(express.static(path.join(__dirname, '../dist/med-online/')));
 //Api
 app.use('/api/v1/captcha', CaptchaController);
 app.use('/api/v1/account', AccountController);
+app.use('/api/v1/pharma', PharmaController);
 
 // Send all other requests to the Angular app
 app.get('*', (req, res) => {
