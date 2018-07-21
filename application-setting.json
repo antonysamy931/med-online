@@ -1,6 +1,6 @@
 {
     "SecureConnectionEnable":false,
-    "HttpDefaultPort":8080,
+    "HttpDefaultPort":8880,
     "HttpsDefaultPort":8443,
     "smtp-host":"secure200.inmotionhosting.com",
     "smtp-port":587,

@@ -56,7 +56,7 @@ import { AlertMessageComponent } from './alert-message/alert-message.component';
     ForgetPasswordComponent,
     ResetPasswordComponent,
     ForgotMessageComponent,
-    AlertMessageComponent
+    AlertMessageComponent,
   ],
   imports: [
     BrowserModule,  

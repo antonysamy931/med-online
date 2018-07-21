@@ -25,8 +25,8 @@ const pageRoutes: Routes = [
   {path: 'pharmas', component: PharmasComponent},
   {path: 'pharmas-users', component: PharmaUsersComponent},
   {path: 'create-pharma', component: AddPharmaComponent},
-  {path: 'edit-pharma', component: UpdatePharmaComponent},
-  {path: 'view-pharma', component: PharmaDetailComponent},
+  {path: 'edit-pharma/:id', component: UpdatePharmaComponent},
+  {path: 'view-pharma/:id', component: PharmaDetailComponent},
   {path: 'operations', component: OperationsComponent},
   {path: 'forgot-password', component: ForgetPasswordComponent},
   {path: 'reset-password/:data', component: ResetPasswordComponent}

@@ -20,7 +20,8 @@ import {
   MatGridListModule,
   MatMenuModule,
   MatSortModule,
-  MatDialogModule    
+  MatDialogModule,
+  MatTooltipModule  
 } from '@angular/material';
 
 @NgModule({
@@ -47,7 +48,8 @@ import {
     MatMenuModule,
     MatGridListModule,
     MatSortModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTooltipModule
   ],
   declarations: []
 })
