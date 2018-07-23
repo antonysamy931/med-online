@@ -15,4 +15,8 @@ export class PharmaService {
   public Pharmas() : Observable<any>{
     return this.http.get(this.Url.GetPharmas);
   }
+
+  public Insert(data: any) : Observable<any>{
+    return this.http.post(this.Url.CreatePharma,data);
+  }
 }

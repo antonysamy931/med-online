@@ -31,7 +31,7 @@ export class PharmasComponent extends Common implements OnInit {
   LoadPharmas() {
     this.spinner.show();
     this.pharma.Pharmas().subscribe((data) => {      
-      this.dataSource = new MatTableDataSource(data); //new PharmasDataSource(this.paginator, this.sort, data);
+      this.dataSource = new MatTableDataSource(data);
       
     }, (error) => {
       console.log(error);
