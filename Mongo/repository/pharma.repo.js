@@ -52,31 +52,61 @@ module.exports = {
         });
     },
     UpdatePharmaAddress: (data) => {
-        Operation.UpdateOne(Address, {_id: data.AddressId}, {
-            Address1: data.Address1,
-            Address2: data.Address2,
-            City: data.City,
-            State: data.State,
-            Country: data.Country,
-            Zipcode: data.Zipcode
-        }).then((result) => {
-            resolve(result);
-        }, (error) => {
-            logger.Error(error);
-            reject(error);
-        })
+        return new Promise((resolve, reject) => {
+            console.log(data.Address._id)
+            Operation.UpdateOne(Address, {_id: data.Address._id}, {
+                Address1: data.Address.Address1,
+                Address2: data.Address.Address2,
+                City: data.Address.City,
+                State: data.Address.State,
+                Country: data.Address.Country,
+                Zipcode: data.Address.Zipcode
+            }).then((result) => {
+                resolve(result);
+            }, (error) => {
+                logger.Error(error);
+                reject(error);
+            })
+        });        
     },
     UpdatePharmaDetail: (data) =>{
-        Operation.UpdateOne(Pharma, {_id: data._id}, {
-            Name: data.Name,
-            Description: data.Description,
-            UpdatedBy: data.UpdatedBy,
-            updatedDate: new Date()
-        }).then((result) => {
-            resolve(result);
-        }, (error) => {
-            logger.Error(error);
-            reject(error);
+        return new Promise((resolve, reject) => {
+            Operation.UpdateOne(Pharma, {_id: data._id}, {
+                Name: data.Name,
+                Description: data.Description,
+                UpdatedBy: data.UpdatedBy,
+                updatedDate: new Date()
+            }).then((result) => {
+                resolve(result);
+            }, (error) => {
+                logger.Error(error);
+                reject(error);
+            })
+        });        
+    }, 
+    GetPharmaById: (id) =>{
+        return new Promise((resolve, reject) => {
+            Operation.FindOneWithPopulate(Pharma, {_id: id}, 'Address').then((result) => {
+                resolve(result);
+            }, (error) => {
+                reject(error);
+            })
+        });        
+    }, DeletePharma: (id) => {
+        return new Promise((resolve, reject) => {
+            Operation.DeleteOne(Pharma, {_id: id}).then((result) => {
+                resolve(result);
+            }, (error) => {
+                reject(error);
+            })
         })
+    }, DeleteAddress: (id) =>{
+        return new Promise((resolve, reject) => {
+            Operation.DeleteOne(Address, {_id: id}).then((result) => {
+                resolve(result);
+            }, (error) => {
+                reject(error);
+            })
+        });
     }
 }

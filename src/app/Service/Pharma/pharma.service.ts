@@ -19,4 +19,16 @@ export class PharmaService {
   public Insert(data: any) : Observable<any>{
     return this.http.post(this.Url.CreatePharma,data);
   }
+
+  public GetById(id: any) : Observable<any>{
+    return this.http.get(`${this.Url.PharmaById}?id=${id}`);
+  }
+
+  public Update(data: any) : Observable<any>{
+    return this.http.post(this.Url.UpdatePharmaDetail, data);
+  }
+
+  public Delete(data: any) : Observable<any>{
+    return this.http.post(this.Url.DeletePharmaDetail, data);
+  }
 }

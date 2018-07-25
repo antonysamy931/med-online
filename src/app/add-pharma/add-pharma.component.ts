@@ -42,4 +42,15 @@ export class AddPharmaComponent extends Common implements OnInit {
     })
   }
 
+  Reset(){
+    this.pharma = {};
+    this.name.reset();
+    this.description.reset();
+    this.address.reset();
+    this.city.reset();
+    this.state.reset();
+    this.country.reset();
+    this.zip.reset();
+  }
+
 }

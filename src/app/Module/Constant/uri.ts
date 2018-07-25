@@ -6,4 +6,7 @@ export class Uri {
     public ResetPassword: string = "/api/v1/account/resetpassword";
     public GetPharmas: string = "/api/v1/pharma/getpharmas";
     public CreatePharma: string = "/api/v1/pharma/createpharma";
+    public PharmaById: string = "/api/v1/pharma/getpharmabyid";
+    public UpdatePharmaDetail: string = "/api/v1/pharma/updatepharma";
+    public DeletePharmaDetail: string = "/api/v1/pharma/deletepharma";
 }

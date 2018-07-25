@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { MatPaginator, MatSort, MatTableDataSource, MatDialog } from '@angular/material';
 import { PharmaService } from '../Service/Pharma/pharma.service';
 import { Common } from '../Module/Helper/common';
 import { Router } from '@angular/router';
@@ -17,7 +17,7 @@ export class PharmasComponent extends Common implements OnInit {
 
   constructor(private pharma: PharmaService, 
     public router: Router,
-    private spinner: NgxSpinnerService){
+    private spinner: NgxSpinnerService, private matDialog: MatDialog){
     super(router);
   }
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
@@ -51,10 +51,20 @@ export class PharmasComponent extends Common implements OnInit {
   }
 
   Delete(row){
-    alert(row);
+    var data = {PharmaId : row._id, AddressId: row.Address._id};
+    this.spinner.show();
+    this.pharma.Delete(data).subscribe((data) =>{
+      this.spinner.hide();
+      this.LoadPharmas();
+    }, (error) => {
+      super.OpenDialog(this.matDialog, error, 'Pharmas');
+      this.spinner.hide();
+    }, () => {
+      this.spinner.hide();
+    })    
   }
 
-  Create(){
+  Create(){    
     this.router.navigateByUrl('/create-pharma')
   }
 

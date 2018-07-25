@@ -21,7 +21,6 @@ PharmaSchema.pre('find',function(){
     this.populate('Address');
 });
 
-
 var Pharma = mongoose.model('Pharma', PharmaSchema);
 
 module.exports = Pharma;

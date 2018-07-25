@@ -28,7 +28,21 @@ module.exports = {
     FindOne: function(type, query){
         return new Promise(function(resolve, reject){                
             type.
-            findOne(query).
+            findOne(query).            
+            exec(function(error, result){
+                if(error){                    
+                    reject(error);
+                }else{                                                          
+                    resolve(result);
+                }
+            });
+        });
+    },
+    FindOneWithPopulate: function(type, query, populate){
+        return new Promise(function(resolve, reject){                
+            type.
+            findOne(query).            
+            populate(populate).            
             exec(function(error, result){
                 if(error){                    
                     reject(error);
@@ -41,7 +55,7 @@ module.exports = {
     UpdateOne: function(type, query, setvalue){
         return new Promise(function(resolve, reject){
             type.
-            findOneAndUpdate(query, {$set: setvalue}, (error, result) => {
+            findByIdAndUpdate(query, {$set: setvalue}, (error, result) => {
                 if(error){
                     reject(error);                    
                 }else{

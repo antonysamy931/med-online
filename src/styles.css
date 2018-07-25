@@ -12,4 +12,42 @@ body {
     text-transform: capitalize;
     text-decoration: underline;
 }
+.custom-inner-card-shadow{
+    box-shadow: 0 5px 5px -3px rgba(0,0,0,.2),0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12) !important;
+}
+.custom-inner-card{
+    padding: 0 !important;
+    width: 70% !important;
+    margin: auto !important;
+}
+.custom-inner-card-header{
+    background: #3f51b5;
+    padding: 1.5%;
+}
+.custom-inner-card-header > .mat-card-header-text{
+    width: 100% !important;
+}
+.custom-inner-card-header-text{
+    margin: 0 !important;
+    text-align: center;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 15px !important;
+    font-family: 'Times New Roman', Times, serif;
+}
+.custom-inner-card-content{
+    padding: 2% !important;
+}
+.custom-inner-card-content > .mat-form-field{
+    width: 98% !important;
+    padding: 0 2% !important;
+}
+.custom-inner-card-actions{
+    margin-right: 4% !important;
+    text-align: right !important;
+    padding: 2% !important;
+}
+.custom-inner-card-content > .row{
+    padding-bottom: 2% !important;
+}
 /*https://webgradients.com/*/
