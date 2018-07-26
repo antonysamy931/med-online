@@ -31,4 +31,8 @@ export class PharmaService {
   public Delete(data: any) : Observable<any>{
     return this.http.post(this.Url.DeletePharmaDetail, data);
   }
+
+  public Count() : Observable<any>{
+    return this.http.get(this.Url.PharmaCount);
+  }
 }

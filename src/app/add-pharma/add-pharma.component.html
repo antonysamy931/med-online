@@ -1,6 +1,6 @@
 <mat-card style="height: 100vh;">
   <mat-card-content>
-    <mat-card class="custom-inner-card-shadow custom-inner-card">
+    <!-- <mat-card class="custom-inner-card-shadow custom-inner-card">
       <mat-card-header class="custom-inner-card-header">
         <mat-card-title class="custom-inner-card-header-text">
           Create Pharma
@@ -44,7 +44,7 @@
           <input matInput placeholder="Enter Zip-code" [formControl]="zip"
             [(ngModel)]="pharma.Zipcode" required />
           <mat-error *ngIf="zip.invalid && zip.hasError('required')">Zipcode is required.</mat-error> 
-        </mat-form-field>
+        </mat-form-field>        
       </mat-card-content>
       <mat-card-actions class="custom-inner-card-actions">
         <button mat-raised-button color="primary"
@@ -54,7 +54,123 @@
           RESET
         </button>
       </mat-card-actions>
+    </mat-card> -->
+    <div class="row">
+      <div class="col-12">
+          <nav class="breadcrumb">
+            <a class="breadcrumb-item" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>            
+            <a class="breadcrumb-item active">Create New Pharmacy</a>
+          </nav>
+      </div>
+    </div>
+    
+    <mat-card class="custom-inner-card-shadow">
+      <mat-card-content>
+        <mat-vertical-stepper [linear]="true" #stepper>
+          <mat-step [stepControl]="pharmainfo">
+            <form [formGroup]="pharmainfo">
+              <ng-template matStepLabel>Fill out pharmacy information</ng-template>
+              <div class="row">
+                <div class="col-12">
+                  <mat-form-field class="col-sm-12 col-md-10 col-lg-8">
+                    <input matInput placeholder="Pharmacy name" formControlName="name"
+                      [(ngModel)]="pharma.Name" required />
+                    <mat-error *ngIf="pharmainfo.controls.name.invalid && pharmainfo.controls.name.hasError('required')">Name is required.</mat-error> 
+                  </mat-form-field>
+                </div>
+              </div>  
+              <div class="row">
+                <div class="col-12">
+                  <mat-form-field class="col-sm-12 col-md-10 col-lg-8">
+                    <input matInput placeholder="Pharmacy description" formControlName="description"
+                      [(ngModel)]="pharma.Description" required/>
+                    <mat-error *ngIf="pharmainfo.controls.description.invalid && pharmainfo.controls.description.hasError('required')">Description is required.</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>           
+              <div class="row mt-3">
+                <div class="col-12">
+                  <button mat-raised-button color="primary" matStepperNext>Next</button>                  
+                </div>            
+              </div>
+            </form>
+          </mat-step>
+          <mat-step [stepControl]="addressinfo">
+            <form [formGroup]="addressinfo">
+              <ng-template matStepLabel>Fill out address</ng-template>
+              <div class="row">
+                <div class="col-12">
+                  <mat-form-field class="col-sm-12 col-md-10 col-lg-8">
+                    <input matInput placeholder="Enter Address Line one" formControlName="address"
+                      [(ngModel)]="pharma.Address1" required/>
+                    <mat-error *ngIf="addressinfo.controls.address.invalid && addressinfo.controls.address.hasError('required')">Address Line one is required.</mat-error> 
+                  </mat-form-field>
+                </div>
+              </div>          
+              <div class="row">
+                <div class="col-12">
+                  <mat-form-field class="col-sm-12 col-md-10 col-lg-8">
+                    <input matInput placeholder="Enter Address line two" [(ngModel)]="pharma.Address2" formControlName="address1" />      
+                  </mat-form-field>
+                </div>
+              </div>          
+              <div class="row">
+                <div class="col-12">
+                  <mat-form-field class="col-sm-12 col-md-10 col-lg-8">
+                    <input matInput placeholder="Enter City" formControlName="city"
+                      [(ngModel)]="pharma.City" required/>
+                    <mat-error *ngIf="addressinfo.controls.city.invalid && addressinfo.controls.city.hasError('required')">City is required.</mat-error> 
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <mat-form-field class="col-sm-12 col-md-10 col-lg-8">
+                    <input matInput placeholder="Enter State" formControlName="state"
+                      [(ngModel)]="pharma.State" required/>
+                    <mat-error *ngIf="addressinfo.controls.state.invalid && addressinfo.controls.state.hasError('required')">State is required.</mat-error> 
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <mat-form-field class="col-sm-12 col-md-10 col-lg-8">
+                    <input matInput placeholder="Enter Country" formControlName="country"
+                      [(ngModel)]="pharma.Country" required />
+                    <mat-error *ngIf="addressinfo.controls.country.invalid && addressinfo.controls.country.hasError('required')">Country is required.</mat-error> 
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <mat-form-field class="col-sm-12 col-md-10 col-lg-8">
+                    <input matInput placeholder="Enter Zip-code" formControlName="zip"
+                      [(ngModel)]="pharma.Zipcode" required />
+                    <mat-error *ngIf="addressinfo.controls.zip.invalid && addressinfo.controls.zip.hasError('required')">Zipcode is required.</mat-error> 
+                  </mat-form-field>
+                </div>
+              </div>          
+              <div class="row">
+                <div class="col-12 mt-2">                
+                  <button mat-raised-button matStepperPrevious class="mr-2">Back</button>
+                  <button mat-raised-button color="primary" matStepperNext>Next</button>
+                </div>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step>
+            <ng-template matStepLabel>Done</ng-template>
+            You are now done. Click save.
+            <div class="mt-3">
+              <button mat-raised-button color="primary" class="mr-2" (click)="Save()">SAVE</button>
+              <button mat-raised-button matStepperPrevious class="mr-2">Back</button>
+              <button mat-raised-button (click)="Reset()">Reset</button>
+            </div>
+          </mat-step>
+        </mat-vertical-stepper>
+      </mat-card-content>
     </mat-card>
+
   </mat-card-content>
 </mat-card>
 

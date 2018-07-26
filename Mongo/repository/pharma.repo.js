@@ -108,5 +108,13 @@ module.exports = {
                 reject(error);
             })
         });
-    }
+    }, PharmaCount: () => {
+        return new Promise((resolve, reject) => {
+            Operation.Count(Pharma, {}).then((result) => {                
+                resolve(result);
+            }, (error) => {                
+                reject(error);
+            });
+        });
+    }    
 }

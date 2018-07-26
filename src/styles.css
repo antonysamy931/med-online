@@ -50,4 +50,8 @@ body {
 .custom-inner-card-content > .row{
     padding-bottom: 2% !important;
 }
+.main-header{
+    /* position: fixed;
+    z-index: 1; */
+}
 /*https://webgradients.com/*/

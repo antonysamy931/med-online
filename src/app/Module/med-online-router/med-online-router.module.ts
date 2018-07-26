@@ -14,20 +14,21 @@ import { PharmaDetailComponent } from '../../pharma-detail/pharma-detail.compone
 import { OperationsComponent } from '../../operations/operations.component';
 import { ForgetPasswordComponent } from '../../forget-password/forget-password.component';
 import { ResetPasswordComponent } from '../../reset-password/reset-password.component';
+import { OnlyLoggedInUser } from '../med-online-guards/LoggedInGuards';
 
 const pageRoutes: Routes = [
   {path: '', redirectTo:'/dashboard', pathMatch: 'full'},
-  {path: 'dashboard', component: MedAdminDashboardComponent},
+  {path: 'dashboard', component: MedAdminDashboardComponent, canActivate: [OnlyLoggedInUser]},
   {path: 'login', component: LoginComponent},
-  {path: 'chart', component: CustomerChartComponent},
-  {path: 'view-profile', component: ViewProfileComponent},
-  {path: 'change-password', component: ChangePasswordComponent},
-  {path: 'pharmas', component: PharmasComponent},
-  {path: 'pharmas-users', component: PharmaUsersComponent},
-  {path: 'create-pharma', component: AddPharmaComponent},
-  {path: 'edit-pharma/:id', component: UpdatePharmaComponent},
-  {path: 'view-pharma/:id', component: PharmaDetailComponent},
-  {path: 'operations', component: OperationsComponent},
+  {path: 'chart', component: CustomerChartComponent, canActivate: [OnlyLoggedInUser]},
+  {path: 'view-profile', component: ViewProfileComponent, canActivate: [OnlyLoggedInUser]},
+  {path: 'change-password', component: ChangePasswordComponent, canActivate: [OnlyLoggedInUser]},
+  {path: 'pharmas', component: PharmasComponent, canActivate: [OnlyLoggedInUser]},
+  {path: 'pharmas-users', component: PharmaUsersComponent, canActivate: [OnlyLoggedInUser]},
+  {path: 'create-pharma', component: AddPharmaComponent, canActivate: [OnlyLoggedInUser]},
+  {path: 'edit-pharma/:id', component: UpdatePharmaComponent, canActivate: [OnlyLoggedInUser]},
+  {path: 'view-pharma/:id', component: PharmaDetailComponent, canActivate: [OnlyLoggedInUser]},
+  {path: 'operations', component: OperationsComponent, canActivate: [OnlyLoggedInUser]},
   {path: 'forgot-password', component: ForgetPasswordComponent},
   {path: 'reset-password/:data', component: ResetPasswordComponent}
 ]

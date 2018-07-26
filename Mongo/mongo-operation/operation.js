@@ -75,5 +75,16 @@ module.exports = {
                 }
             });
         });
+    },
+    Count: function(type, query){
+        return new Promise(function(resolve, reject) {
+            type.count(query, function(error, result) {                
+                if(error){
+                    reject(error);
+                }else{
+                    resolve(result);
+                }
+            });
+        });
     }
 }

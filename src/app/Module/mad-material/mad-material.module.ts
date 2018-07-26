@@ -21,7 +21,8 @@ import {
   MatMenuModule,
   MatSortModule,
   MatDialogModule,
-  MatTooltipModule  
+  MatTooltipModule,
+  MatStepperModule
 } from '@angular/material';
 
 @NgModule({
@@ -49,7 +50,8 @@ import {
     MatGridListModule,
     MatSortModule,
     MatDialogModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatStepperModule
   ],
   declarations: []
 })

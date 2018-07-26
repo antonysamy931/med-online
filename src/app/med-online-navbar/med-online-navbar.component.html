@@ -1,11 +1,11 @@
 <mat-sidenav-container class="sidenav-container" *ngIf="authService.IsLoggedIn()">
-  <mat-sidenav
+  <mat-sidenav 
     #drawer
     class="sidenav"
     fixedInViewport="true"
-    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'"
-    [opened]="!(isHandset$ | async)">
+    [attr.role]="dialog"
+    [mode]="over"
+    [opened]="false">
     <mat-toolbar color="primary">
       <a routerLink="/" style="margin-left:25%;">
         <img style="border-radius: 50%;" src="../../assets/images/small-medical-logo.jpg" />
@@ -15,11 +15,12 @@
       <a mat-list-item routerLink="/dashboard" routerLinkActive="Active">Dashboard</a>
       <mat-divider></mat-divider>
       <a mat-list-item routerLink="/pharmas" routerLinkActive="Active">Pharmas</a>
+      <mat-divider></mat-divider>
       <a mat-list-item routerLink="/operations" routerLinkActive="Active">Operations</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
+    <mat-toolbar color="primary" class="main-header">
       <button
         type="button"
         aria-label="Toggle sidenav"
@@ -28,8 +29,26 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
+      <div *ngIf="!(isHandset$ | async)">
+        <a routerLink="/" style="margin-left:25%;" matTooltip="Med-Online">
+          <img style="border-radius: 50%;" src="../../assets/images/small-medical-logo.jpg" />
+        </a>
+      </div>
+
       <span style="flex: 1 1 auto;"></span>
-      <button class="DisplayUserInfo" mat-button (mouseover)="OpenUserMenu()" 
+
+      <div *ngIf="!(isHandset$ | async)">
+        <button class="DisplayUserInfo" mat-button routerLink="/dashboard">Dashboard</button>
+        <button class="DisplayUserInfo" mat-button [matMenuTriggerFor]="parmamenu">Pharma
+          <mat-icon>expand_more</mat-icon>
+        </button>
+        <mat-menu #parmamenu [overlapTrigger]="false" yPosition="below">
+          <button mat-menu-item routerLink="/pharmas">Pharmas</button>
+          <button mat-menu-item routerLink="/create-pharma">Create Pharma</button>        
+        </mat-menu>
+      </div>
+
+      <button class="DisplayUserInfo" mat-button
       [matMenuTriggerFor]="usermenu">{{authService.GetUserDisplayName()}}
       <mat-icon>expand_more</mat-icon>
       </button>
@@ -46,3 +65,7 @@
 <div *ngIf="!authService.IsLoggedIn()">
   <router-outlet></router-outlet>
 </div>
+
+<!--[attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+[mode]="(isHandset$ | async) ? 'over' : 'side'"
+[opened]="!(isHandset$ | async)"-->

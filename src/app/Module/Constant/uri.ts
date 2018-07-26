@@ -9,4 +9,5 @@ export class Uri {
     public PharmaById: string = "/api/v1/pharma/getpharmabyid";
     public UpdatePharmaDetail: string = "/api/v1/pharma/updatepharma";
     public DeletePharmaDetail: string = "/api/v1/pharma/deletepharma";
+    public PharmaCount: string = "/api/v1/pharma/pharmascount";
 }

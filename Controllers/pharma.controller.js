@@ -41,8 +41,7 @@ Router.post('/updatepharma', (req, res, next) => {
 });
 
 Router.post('/deletepharma', (req, res, next) => {
-    var body = req.body;
-    console.log(body);
+    var body = req.body;    
     Repository.Pharma.DeleteAddress(body.AddressId).then((result) => {
         Repository.Pharma.DeletePharma(body.PharmaId).then((pharmaresult) =>{
             res.status(200).json(pharmaresult);
@@ -52,6 +51,14 @@ Router.post('/deletepharma', (req, res, next) => {
     }, (error) => {
         res.status(500).json(error);
     })
+});
+
+Router.get('/pharmascount', (req, res, next) => {
+    Repository.Pharma.PharmaCount().then((result) => {
+        res.status(200).json(result);
+    }, (error) => {
+        res.status(500).json(error);
+    });
 });
 
 module.exports = Router;

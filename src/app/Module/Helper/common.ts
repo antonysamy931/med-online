@@ -9,11 +9,11 @@ export abstract class Common implements OnInit {
     }
     private auth: AuthService = new AuthService();
     ngOnInit(){        
-        if(!this.auth.IsLoggedIn() 
+        /*if(!this.auth.IsLoggedIn() 
         && window.location.pathname.split('/').indexOf('reset-password') == -1
         && window.location.pathname.split('/').indexOf('forgot-password') == -1){
             this.router.navigateByUrl('/login');
-        }
+        }*/
     }
 
     Logout(){
@@ -21,11 +21,10 @@ export abstract class Common implements OnInit {
         this.router.navigateByUrl('/login');        
     }
 
-    Redirect(url){
-        console.log(url);
+    Redirect(url){        
         setTimeout(() => {
             this.router.navigateByUrl(url);
-        }, 1000);        
+        }, 100);        
     }
 
     OpenDialog(matDialog: MatDialog, message: string, title: string): void{

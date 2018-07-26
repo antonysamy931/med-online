@@ -30,6 +30,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 import { AuthInterceptor } from './Module/Helper/auth-interceptor';
 import { ForgotMessageComponent } from './forgot-message/forgot-message.component';
 import { AlertMessageComponent } from './alert-message/alert-message.component';
+import { OnlyLoggedInUser } from './Module/med-online-guards/LoggedInGuards';
 
 @NgModule({
   entryComponents:[
@@ -74,7 +75,8 @@ import { AlertMessageComponent } from './alert-message/alert-message.component';
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true
-  }],
+  },
+  OnlyLoggedInUser],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

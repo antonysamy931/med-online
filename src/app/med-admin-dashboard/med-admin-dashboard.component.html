@@ -11,12 +11,12 @@
               <mat-icon>more_vert</mat-icon>
             </button>
             <mat-menu #customermenu="matMenu" xPosition="before">
-              <button mat-menu-item>View</button>              
+              <button mat-menu-item (click)="Redirect('/pharmas')">View</button>              
             </mat-menu>
           </mat-card-title>
         </mat-card-header>
         <mat-card-content class="dashboard-card-content custom-show-card-content">
-          <div>50</div>
+          <div>{{PhramaCount}}</div>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>    
@@ -76,7 +76,7 @@
     </mat-grid-tile>
   </mat-grid-list>
 
-  <mat-grid-list cols="2" rowHeight="300px">
+  <mat-grid-list cols="2" rowHeight="400px">
     
     <mat-grid-tile [colspan]="1" [rowspan]="1">
       <mat-card style="width: 94%;">
@@ -118,7 +118,7 @@
 
   </mat-grid-list> 
 
-  <mat-grid-list cols="1" rowHeight="550px">
+  <mat-grid-list cols="1" rowHeight="650px">
     <mat-grid-tile [colspan]="1" [rowspan]="1">
       <mat-card style="width: 97%;">
           <mat-card-header>

@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Common } from '../Module/Helper/common';
 import { Router } from '../../../node_modules/@angular/router';
-import { FormControl, Validators } from '../../../node_modules/@angular/forms';
+import { FormControl, Validators, FormGroup, FormBuilder } from '../../../node_modules/@angular/forms';
 import { PharmaService } from '../Service/Pharma/pharma.service';
 import { NgxSpinnerService } from '../../../node_modules/ngx-spinner';
+import { MatStepper } from '../../../node_modules/@angular/material';
 
 @Component({
   selector: 'app-add-pharma',
@@ -14,21 +15,32 @@ export class AddPharmaComponent extends Common implements OnInit {
 
   pharma = {};
 
+  pharmainfo: FormGroup;
+  addressinfo: FormGroup;
+ 
+  @ViewChild(MatStepper) stepper: MatStepper;
+
   constructor(public router: Router, 
     private pharmaService: PharmaService, 
-    private spinner: NgxSpinnerService) {
+    private spinner: NgxSpinnerService,
+    private formbuilder: FormBuilder) {
     super(router);
   }
 
-  name = new FormControl('name', [Validators.required]);
-  description = new FormControl('description', [Validators.required]);
-  address = new FormControl('address', [Validators.required]);
-  city = new FormControl('city', [Validators.required]);
-  state = new FormControl('state', [Validators.required]);
-  country = new FormControl('country', [Validators.required]);
-  zip = new FormControl('zip', [Validators.required]);
-
   ngOnInit() {
+    this.pharmainfo = this.formbuilder.group({
+      name: ['', [Validators.required]],
+      description: ['', [Validators.required]]
+    });
+
+    this.addressinfo = this.formbuilder.group({
+      address: ['',[Validators.required]],
+      address1: [''],
+      city: ['',[Validators.required]],
+      state: ['',[Validators.required]],
+      country: ['',[Validators.required]],
+      zip: ['',[Validators.required]]
+    });
     super.ngOnInit();
   }
 
@@ -42,15 +54,9 @@ export class AddPharmaComponent extends Common implements OnInit {
     })
   }
 
-  Reset(){
+  Reset(){    
     this.pharma = {};
-    this.name.reset();
-    this.description.reset();
-    this.address.reset();
-    this.city.reset();
-    this.state.reset();
-    this.country.reset();
-    this.zip.reset();
+    this.stepper.reset();
   }
 
 }
