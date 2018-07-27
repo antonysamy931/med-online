@@ -1,6 +1,145 @@
 <mat-card style="height: 100vh;">
   <mat-card-content>
-    <mat-card class="custom-inner-card-shadow custom-inner-card">
+
+    <div class="row">
+        <div class="col-12">
+            <nav class="breadcrumb">
+                <a class="breadcrumb-item" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+                <a class="breadcrumb-item" routerLink="/pharmas" routerLinkActive="active">Pharmas</a>
+                <a class="breadcrumb-item active">Pharma Detail</a>
+            </nav>
+        </div>
+    </div>
+    
+    <div class="row mb-2">
+        <div class="col-12 text-right">
+            <button mat-raised-button color="primary" routerLink="/edit-pharma/{{PharmaId}}" matTooltip="Edit">EDIT</button>            
+        </div>
+    </div>
+
+    <mat-card class="custom-inner-card-shadow">        
+        <mat-card-content>
+            <div class="row">
+                <div class="col-sm-12 col-md-6 col-sm-12">
+                    <h3 class="font-weight-bold">Pharma detail : <i>{{Pharma.Name}}</i></h3>
+                    <hr />
+                </div>
+                <div class="col-sm-12 col-md-6 col-sm-12">
+                    <h3 class="font-weight-bold">Actions</h3>
+                    <hr />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-6 col-sm-12">
+                    <div class="row">
+                        <div class="col-6">
+                            <label class="ml-5">Name :</label>
+                        </div>
+                        <div class="col-6">
+                            <label>{{Pharma.Name}}</label>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="row">
+                        <div class="col-6">
+                            <label class="ml-5">Description :</label>
+                        </div>
+                        <div class="col-6">
+                            <label>{{Pharma.Description}}</label>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="row">
+                        <div class="col-6">
+                            <label class="ml-5">Address1 :</label>
+                        </div>
+                        <div class="col-6">
+                            <label>{{Pharma.Address.Address1}}</label>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="row">
+                        <div class="col-6">
+                            <label class="ml-5">Address 2 :</label>
+                        </div>
+                        <div class="col-6">
+                            <label>{{Pharma.Address.Address2}}</label>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="row">          
+                        <div class="col-6">
+                            <label class="ml-5">City :</label>
+                        </div>
+                        <div class="col-6">
+                            <label>
+                                {{Pharma.Address.City}}
+                            </label>                    
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="row">                          
+                        <div class="col-6">
+                            <label class="ml-5">State :</label>
+                        </div>                
+                        <div class="col-6">
+                            <label>
+                                {{Pharma.Address.State}}
+                            </label>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="row">          
+                        <div class="col-6">
+                            <label class="ml-5">Country :</label>
+                        </div>                
+                        <div class="col-6">
+                            <label>{{Pharma.Address.Country}}</label>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="row">                          
+                        <div class="col-6">
+                            <label class="ml-5">Zipcode</label>    
+                        </div>                
+                        <div class="col-6">
+                            <label>{{Pharma.Address.Zipcode}}</label>
+                        </div>
+                    </div>
+                    <hr/>
+                </div>
+                <div class="col-sm-12 col-md-6 col-sm-12">
+                    <div class="row">
+                        <div class="col-12">
+                            <a routerLink="/pharmas-users/{{PharmaId}}" routerLinkActive="active">View Users</a>
+                            <hr/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <a href="#">Add Users</a>
+                            <hr/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <a href="#">View Stock</a>
+                            <hr/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <a href="#">Request Stock</a>
+                            <hr/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    
+            
+    <!-- <mat-card class="custom-inner-card-shadow custom-inner-card">
       <mat-card-header class="custom-inner-card-header">
         <mat-card-title class="custom-inner-card-header-text">
           Pharma detail : <i>{{Pharma.Name}}</i>
@@ -59,7 +198,7 @@
       <mat-card-actions class="custom-inner-card-actions">
           <a mat-raised-button color="primary" routerLink="/edit-pharma/{{PharmaId}}">EDIT</a>
         </mat-card-actions>
-    </mat-card>
+    </mat-card> -->
   </mat-card-content>
 
 </mat-card>

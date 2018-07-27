@@ -31,12 +31,14 @@ import { AuthInterceptor } from './Module/Helper/auth-interceptor';
 import { ForgotMessageComponent } from './forgot-message/forgot-message.component';
 import { AlertMessageComponent } from './alert-message/alert-message.component';
 import { OnlyLoggedInUser } from './Module/med-online-guards/LoggedInGuards';
+import { ConfirmBoxComponent } from './confirm-box/confirm-box.component';
 
 @NgModule({
   entryComponents:[
     ForgetPasswordComponent,
     ForgotMessageComponent,
-    AlertMessageComponent
+    AlertMessageComponent,
+    ConfirmBoxComponent
   ],
   declarations: [     
     AppComponent,     
@@ -58,6 +60,7 @@ import { OnlyLoggedInUser } from './Module/med-online-guards/LoggedInGuards';
     ResetPasswordComponent,
     ForgotMessageComponent,
     AlertMessageComponent,
+    ConfirmBoxComponent,
   ],
   imports: [
     BrowserModule,  

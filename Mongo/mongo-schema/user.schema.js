@@ -18,17 +18,22 @@ var UserSchema = new Schema({
         Office: {type: String}
     },
     UserId: {type: String, required: true, index: true, unique: true},
-    Role: {type: String, required: true},
+    Role: {type: String, required: true},    
     CreatedDate: {type: Date, default: new Date()},
     CreatedBy: {type: String},
     UpdatedDate: {type: Date},
     UpdatedBy: {type: String},
     IsActive: {type: Boolean, default: true},
-    IsDelete: {type: Boolean, default: false}    
+    IsDelete: {type: Boolean, default: false},
+    Pharma: {type: Schema.Types.ObjectId, ref:"Pharma"}
 });
 
 UserSchema.pre('findOneAndUpdate',() => {
     this.UpdatedDate = new Date();
+});
+
+UserSchema.pre('find', function(){
+    this.populate('Pharma');
 });
 
 var User = mongoose.model("User", UserSchema);

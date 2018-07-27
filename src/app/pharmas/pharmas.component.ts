@@ -4,6 +4,7 @@ import { PharmaService } from '../Service/Pharma/pharma.service';
 import { Common } from '../Module/Helper/common';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { ConfirmBoxComponent } from '../confirm-box/confirm-box.component';
 
 @Component({
   selector: 'pharmas',
@@ -13,7 +14,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class PharmasComponent extends Common implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  dataSource: any;
+  dataSource: any;  
 
   constructor(private pharma: PharmaService, 
     public router: Router,
@@ -50,18 +51,29 @@ export class PharmasComponent extends Common implements OnInit {
     this.router.navigateByUrl('/edit-pharma/'+row);
   }
 
-  Delete(row){
-    var data = {PharmaId : row._id, AddressId: row.Address._id};
-    this.spinner.show();
-    this.pharma.Delete(data).subscribe((data) =>{
-      this.spinner.hide();
-      this.LoadPharmas();
-    }, (error) => {
-      super.OpenDialog(this.matDialog, error, 'Pharmas');
-      this.spinner.hide();
-    }, () => {
-      this.spinner.hide();
-    })    
+  Delete(row){    
+    const dialogRef = this.matDialog.open(ConfirmBoxComponent,
+    {
+        width: "400px",
+        data: {title: "Delete Confirmation", 
+        content: "Are you sure, You want to remove this Pharmacy?"}
+    });
+    
+    dialogRef.afterClosed().subscribe(result =>{      
+      if(result == "Yes"){
+        var data = {PharmaId : row._id, AddressId: row.Address._id};
+        this.spinner.show();
+        this.pharma.Delete(data).subscribe((data) =>{
+          this.spinner.hide();
+          this.LoadPharmas();
+        }, (error) => {
+          super.OpenDialog(this.matDialog, error, 'Pharmas');
+          this.spinner.hide();
+        }, () => {
+          this.spinner.hide();
+        });
+      }
+    });
   }
 
   Create(){    

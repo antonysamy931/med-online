@@ -24,7 +24,7 @@ const pageRoutes: Routes = [
   {path: 'view-profile', component: ViewProfileComponent, canActivate: [OnlyLoggedInUser]},
   {path: 'change-password', component: ChangePasswordComponent, canActivate: [OnlyLoggedInUser]},
   {path: 'pharmas', component: PharmasComponent, canActivate: [OnlyLoggedInUser]},
-  {path: 'pharmas-users', component: PharmaUsersComponent, canActivate: [OnlyLoggedInUser]},
+  {path: 'pharmas-users/:id', component: PharmaUsersComponent, canActivate: [OnlyLoggedInUser]},
   {path: 'create-pharma', component: AddPharmaComponent, canActivate: [OnlyLoggedInUser]},
   {path: 'edit-pharma/:id', component: UpdatePharmaComponent, canActivate: [OnlyLoggedInUser]},
   {path: 'view-pharma/:id', component: PharmaDetailComponent, canActivate: [OnlyLoggedInUser]},

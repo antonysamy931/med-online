@@ -10,4 +10,6 @@ export class Uri {
     public UpdatePharmaDetail: string = "/api/v1/pharma/updatepharma";
     public DeletePharmaDetail: string = "/api/v1/pharma/deletepharma";
     public PharmaCount: string = "/api/v1/pharma/pharmascount";
+    public PharmaUsers: string = "/api/v1/user/getpharmausers";
+    public CreatePharmaUser: string = "/api/v1/user/addpharmauser";
 }

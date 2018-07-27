@@ -3,6 +3,7 @@ import { AuthService } from "../../Service/Auth/auth.service";
 import { Router } from "@angular/router";
 import { MatDialog } from "../../../../node_modules/@angular/material";
 import { AlertMessageComponent } from "../../alert-message/alert-message.component";
+import { ConfirmBoxComponent } from "../../confirm-box/confirm-box.component";
 
 export abstract class Common implements OnInit {
     constructor(public router: Router){
@@ -36,6 +37,6 @@ export abstract class Common implements OnInit {
         
         dialogRef.afterClosed().subscribe(result =>{      
         });
-    }
+    }    
 
 }

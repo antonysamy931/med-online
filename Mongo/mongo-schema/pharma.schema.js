@@ -6,7 +6,7 @@ var PharmaSchema = new Schema({
     _id: {type: Schema.Types.ObjectId, default: new mongoose.Types.ObjectId},
     Name: {type: String, required: true, index: true},
     Description: {type: String, required: true},
-    Address: {type: Schema.Types.ObjectId, ref: 'Address'},
+    Address: {type: Schema.Types.ObjectId, ref: 'Address'},    
     CreatedDate: {type: Date, default: new Date()},
     CreatedBy: {type: String},
     UpdatedDate: {type: Date},

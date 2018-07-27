@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Common } from '../Module/Helper/common';
 import { Router, ActivatedRoute } from '../../../node_modules/@angular/router';
 import { PharmaService } from '../Service/Pharma/pharma.service';
-import { MatDialog } from '../../../node_modules/@angular/material';
+import { MatDialog, MatStepper } from '../../../node_modules/@angular/material';
 import { NgxSpinnerService } from '../../../node_modules/ngx-spinner';
 import { Pharma, Address } from '../Module/Model/Pharma';
-import { FormControl, Validators } from '../../../node_modules/@angular/forms';
+import { FormControl, Validators, FormGroup, FormBuilder } from '../../../node_modules/@angular/forms';
 
 @Component({
   selector: 'app-update-pharma',
@@ -16,25 +16,37 @@ export class UpdatePharmaComponent extends Common implements OnInit {
   private PharmaId: any;
   private pharma: Pharma = new Pharma();  
   
+  pharmainfo: FormGroup;
+  addressinfo: FormGroup;
+  
+  @ViewChild(MatStepper) stepper: MatStepper;
+
   constructor(public router: Router, private route: ActivatedRoute, 
     private pharmaservice: PharmaService,
-    private matDialog: MatDialog, private spinner: NgxSpinnerService) { 
+    private matDialog: MatDialog, private spinner: NgxSpinnerService,
+    private formbuilder: FormBuilder) { 
     super(router);
   }
 
-  name = new FormControl('name', [Validators.required]);
-  description = new FormControl('description', [Validators.required]);
-  address = new FormControl('address', [Validators.required]);
-  city = new FormControl('city', [Validators.required]);
-  state = new FormControl('state', [Validators.required]);
-  country = new FormControl('country', [Validators.required]);
-  zip = new FormControl('zip', [Validators.required]);
-
   ngOnInit() {
     super.ngOnInit();
-    this.pharma.Address = new Address();
+    this.pharma.Address = new Address();    
     this.route.params.subscribe((param) => {
       this.PharmaId = param["id"];
+    });
+
+    this.pharmainfo = this.formbuilder.group({
+      name: ['', [Validators.required]],
+      description: ['', [Validators.required]]
+    });
+
+    this.addressinfo = this.formbuilder.group({
+      address: ['',[Validators.required]],
+      address1: [''],
+      city: ['',[Validators.required]],
+      state: ['',[Validators.required]],
+      country: ['',[Validators.required]],
+      zip: ['',[Validators.required]]
     });
 
     this.LoadPharma();
@@ -51,15 +63,9 @@ export class UpdatePharmaComponent extends Common implements OnInit {
     })
   }
 
-  Reset(){
-    this.name.reset();
-    this.description.reset();
-    this.address.reset();
-    this.city.reset();
-    this.state.reset();
-    this.country.reset();
-    this.zip.reset();
+  Reset(){    
     this.LoadPharma();
+    this.stepper.reset();
   }
 
   Save(){
