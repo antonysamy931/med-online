@@ -32,6 +32,8 @@ import { ForgotMessageComponent } from './forgot-message/forgot-message.componen
 import { AlertMessageComponent } from './alert-message/alert-message.component';
 import { OnlyLoggedInUser } from './Module/med-online-guards/LoggedInGuards';
 import { ConfirmBoxComponent } from './confirm-box/confirm-box.component';
+import { AddPharmaUserComponent } from './add-pharma-user/add-pharma-user.component';
+import { UpdatePharmaUserComponent } from './update-pharma-user/update-pharma-user.component';
 
 @NgModule({
   entryComponents:[
@@ -61,6 +63,8 @@ import { ConfirmBoxComponent } from './confirm-box/confirm-box.component';
     ForgotMessageComponent,
     AlertMessageComponent,
     ConfirmBoxComponent,
+    AddPharmaUserComponent,
+    UpdatePharmaUserComponent,
   ],
   imports: [
     BrowserModule,  

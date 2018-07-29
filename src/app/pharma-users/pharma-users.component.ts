@@ -71,6 +71,6 @@ export class PharmaUsersComponent extends Common implements OnInit {
   }
 
   Create(){
-
+    this.router.navigateByUrl('/add-pharma-user/'+this.PharmaId);
   }
 }
