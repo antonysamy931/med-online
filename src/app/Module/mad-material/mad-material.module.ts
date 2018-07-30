@@ -2,6 +2,10 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { LayoutModule } from '@angular/cdk/layout';
+
+import {CdkTableModule} from '@angular/cdk/table';
+import {CdkTreeModule} from '@angular/cdk/tree';
+
 import { 
   MatToolbarModule, 
   MatButtonModule, 
@@ -22,7 +26,8 @@ import {
   MatSortModule,
   MatDialogModule,
   MatTooltipModule,
-  MatStepperModule
+  MatStepperModule,
+  MatDatepickerModule  
 } from '@angular/material';
 
 @NgModule({
@@ -51,7 +56,10 @@ import {
     MatSortModule,
     MatDialogModule,
     MatTooltipModule,
-    MatStepperModule
+    MatStepperModule,
+    MatDatepickerModule,
+    CdkTableModule,
+    CdkTreeModule
   ],
   declarations: []
 })

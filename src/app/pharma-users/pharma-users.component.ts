@@ -59,11 +59,11 @@ export class PharmaUsersComponent extends Common implements OnInit {
   }
 
   View(id: any){
-    console.log(id);
+    this.router.navigateByUrl('/pharma-user-detail/'+id);
   }
 
   Edit(id: any){
-    console.log(id);
+    this.router.navigateByUrl('/edit-pharma-user/'+id);
   }
 
   Delete(row: any){

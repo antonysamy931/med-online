@@ -16,7 +16,7 @@
         <mat-vertical-stepper [linear]="true">
           <mat-step [stepControl]="PersonalInfo">
             <form [formGroup]="PersonalInfo">
-              <ng-template matStepLabel>Fill out personal information</ng-template>
+              <ng-template matStepLabel>Fill out Personal information</ng-template>
               <div class="row">
                 <div class="col-12">
                   <mat-form-field class="col-sm-12 col-md-10 col-lg-8">
@@ -29,12 +29,36 @@
               <div class="row">
                 <div class="col-12">
                   <mat-form-field class="col-sm-12 col-md-10 col-lg-8">
-                    <input matInput placeholder="Last name" formControlName="LastName"
-                      [(ngModel)]="PharmaUser.LastName" required/>
-                    <mat-error *ngIf="PersonalInfo.controls.LastName.invalid && PersonalInfo.controls.LastName.hasError('required')">Description is required.</mat-error>
+                    <input matInput placeholder="Middle name" formControlName="MiddleName"
+                      [(ngModel)]="PharmaUser.MiddleName" />
                   </mat-form-field>
                 </div>
-              </div>           
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <mat-form-field class="col-sm-12 col-md-10 col-lg-8">
+                    <input matInput placeholder="Family name" formControlName="FamilyName"
+                      [(ngModel)]="PharmaUser.FamilyName" />
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <mat-form-field class="col-sm-12 col-md-10 col-lg-8">
+                    <input matInput placeholder="Last name" formControlName="LastName"
+                      [(ngModel)]="PharmaUser.LastName" required/>
+                    <mat-error *ngIf="PersonalInfo.controls.LastName.invalid && PersonalInfo.controls.LastName.hasError('required')">Last name is required.</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>    
+              <div class="row">
+                <div class="col-12">
+                  <mat-form-field class="col-sm-12 col-md-10 col-lg-8">
+                    <input matInput placeholder="Date of birth" formControlName="DOB"
+                      [(ngModel)]="PharmaUser.DOB"  />
+                  </mat-form-field>
+                </div>
+              </div>       
               <div class="row mt-3">
                 <div class="col-12">
                   <button mat-raised-button color="primary" matStepperNext>Next</button>                  
@@ -46,12 +70,108 @@
             <form [formGroup]="ContactInfo">
               <ng-template matStepLabel>Fill out Contact Information</ng-template>              
               <div class="row">
+                <div class="col-12">
+                  <mat-form-field class="col-sm-12 col-md-10 col-lg-8">
+                    <input matInput placeholder="Email address" formControlName="Email"
+                      [(ngModel)]="PharmaUser.Email" required/>
+                    <mat-error *ngIf="ContactInfo.controls.Email.invalid && ContactInfo.controls.Email.hasError('required')">Email address is required.</mat-error>
+                    <mat-error *ngIf="ContactInfo.controls.Email.invalid && ContactInfo.controls.Email.hasError('email')">Invalid email address.</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <mat-form-field class="col-sm-12 col-md-10 col-lg-8">
+                    <input matInput placeholder="Mobile number" formControlName="PersonalNumber"
+                      [(ngModel)]="PharmaUser.PersonalNumber" required/>
+                    <mat-error *ngIf="ContactInfo.controls.PersonalNumber.invalid && ContactInfo.controls.PersonalNumber.hasError('required')">Phone number is required.</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <mat-form-field class="col-sm-12 col-md-10 col-lg-8">
+                    <input matInput placeholder="Home contact number" type="number" formControlName="HomeNumber"
+                      [(ngModel)]="PharmaUser.HomeNumber"/>                    
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <mat-form-field class="col-sm-12 col-md-10 col-lg-8">
+                    <input matInput placeholder="Office contact number" type="number" formControlName="OfficeNumber"
+                      [(ngModel)]="PharmaUser.OfficeNumber"/>                    
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
                 <div class="col-12 mt-2">                
                   <button mat-raised-button matStepperPrevious class="mr-2">Back</button>
                   <button mat-raised-button color="primary" matStepperNext>Next</button>
                 </div>
               </div>
             </form>
+          </mat-step>
+          <mat-step [stepControl]="AccessInfo">
+            <form [formGroup]="AccessInfo">
+              <ng-template matStepLabel>Fill out Access Information</ng-template>              
+              <div class="row">
+                <div class="col-12">
+                  <mat-form-field class="col-sm-12 col-md-10 col-lg-8">
+                    <mat-select placeholder="User role" formControlName="Role" [(ngModel)]="PharmaUser.Role" required>
+                      <mat-option *ngFor="let item of role" [value]="item.value">{{item.text}}</mat-option> 
+                    </mat-select>
+                    <mat-error *ngIf="AccessInfo.controls.Role.invalid && AccessInfo.controls.Role.hasError('required')">Role is required.</mat-error>
+                  </mat-form-field>
+                </div>
+              </div>              
+              <div class="row">
+                <div class="col-12 mt-2">                
+                  <button mat-raised-button matStepperPrevious class="mr-2">Back</button>
+                  <button mat-raised-button color="primary" matStepperNext>Next</button>
+                </div>
+              </div>
+            </form>
+          </mat-step>
+          <mat-step [stepControl]="AccountInfo">
+              <form [formGroup]="AccountInfo">
+                <ng-template matStepLabel>Fill out Account Information</ng-template>              
+                <div class="row">
+                  <div class="col-12">
+                    <mat-form-field class="col-sm-12 col-md-10 col-lg-8">
+                      <input matInput placeholder="Enter Username" formControlName="Username" 
+                        [(ngModel)]="PharmaUser.Username" required  />                    
+                      <mat-error *ngIf="AccountInfo.controls.Username.invalid && AccountInfo.controls.Username.hasError('required')">Username is required.</mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>  
+                <div class="row">
+                  <div class="col-12">
+                    <mat-form-field class="col-sm-12 col-md-10 col-lg-8">
+                      <input matInput placeholder="Enter password" formControlName="Password" 
+                        [(ngModel)]="PharmaUser.Password" required [type]="hide ? 'password' : 'text'"/>                   
+                      <mat-icon style="cursor:pointer;" matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>                
+                      <mat-error *ngIf="AccountInfo.controls.Password.invalid && AccountInfo.controls.Password.hasError('required')">Passwrod is required.</mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12">
+                    <mat-form-field class="col-sm-12 col-md-10 col-lg-8">
+                      <input matInput placeholder="Enter confirm password" formControlName="ConfirmPassword" 
+                        [(ngModel)]="PharmaUser.ConfirmPassword" required [type]="confirmhide ? 'password' : 'text'"/>                   
+                      <mat-icon style="cursor:pointer;" matSuffix (click)="confirmhide = !confirmhide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>                
+                      <mat-error *ngIf="AccountInfo.controls.ConfirmPassword.invalid && AccountInfo.controls.ConfirmPassword.hasError('required')">Confirm passwrod is required.</mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>  
+                <div class="row">
+                  <div class="col-12 mt-2">                
+                    <button mat-raised-button matStepperPrevious class="mr-2">Back</button>
+                    <button mat-raised-button color="primary" matStepperNext>Next</button>
+                  </div>
+                </div>
+              </form>
           </mat-step>
           <mat-step>
             <ng-template matStepLabel>Done</ng-template>
@@ -67,3 +187,4 @@
     </mat-card>
   </mat-card-content>
 </mat-card>
+

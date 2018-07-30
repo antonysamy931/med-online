@@ -34,6 +34,7 @@ import { OnlyLoggedInUser } from './Module/med-online-guards/LoggedInGuards';
 import { ConfirmBoxComponent } from './confirm-box/confirm-box.component';
 import { AddPharmaUserComponent } from './add-pharma-user/add-pharma-user.component';
 import { UpdatePharmaUserComponent } from './update-pharma-user/update-pharma-user.component';
+import { PharmaUserDetailComponent } from './pharma-user-detail/pharma-user-detail.component';
 
 @NgModule({
   entryComponents:[
@@ -65,6 +66,7 @@ import { UpdatePharmaUserComponent } from './update-pharma-user/update-pharma-us
     ConfirmBoxComponent,
     AddPharmaUserComponent,
     UpdatePharmaUserComponent,
+    PharmaUserDetailComponent    
   ],
   imports: [
     BrowserModule,  

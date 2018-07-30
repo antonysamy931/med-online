@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Common } from '../Module/Helper/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { PharmaUserService } from '../Service/PharmaUser/pharma-user.service';
+import { MatDialog, MatStepper } from '../../../node_modules/@angular/material';
 
 @Component({
   selector: 'app-add-pharma-user',
@@ -14,7 +16,9 @@ export class AddPharmaUserComponent extends Common implements OnInit {
   constructor(public router: Router, 
     private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder, 
-    private spinner: NgxSpinnerService) {
+    private spinner: NgxSpinnerService, 
+    private pharmaUserService: PharmaUserService,
+    private matDialoge: MatDialog) {
     super(router);
   }
 
@@ -24,6 +28,12 @@ export class AddPharmaUserComponent extends Common implements OnInit {
   private ContactInfo: FormGroup;
   private AccessInfo: FormGroup;
   private AccountInfo: FormGroup;
+
+  private role: any = [{value: "admin", text: "Admin"}, {value: "member", text: "Member"}]
+  private hide: boolean = true;
+  private confirmhide: boolean = true;
+
+  @ViewChild(MatStepper) stepper: MatStepper;
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((param) => {
@@ -39,7 +49,7 @@ export class AddPharmaUserComponent extends Common implements OnInit {
     });
 
     this.ContactInfo = this.formBuilder.group({
-      Email: ['', [Validators.required]],
+      Email: ['', [Validators.required, Validators.email]],
       PersonalNumber: ['', [Validators.required]],
       HomeNumber: ['', []],
       OfficeNumber: ['', []]
@@ -54,6 +64,25 @@ export class AddPharmaUserComponent extends Common implements OnInit {
       Password: ['', [Validators.required]],
       ConfirmPassword: ['', [Validators.required]]
     });
+
+    this.PharmaUser.DOB = "";
+  }
+
+  Save(){    
+    this.spinner.show();
+    this.PharmaUser.Pharma = this.PharmaId;
+    this.pharmaUserService.Create(this.PharmaUser).subscribe((data) => {
+      this.spinner.hide();
+      this.router.navigateByUrl(`/view-pharma/${this.PharmaId}`);
+    }, (error) => {
+      this.OpenDialog(this.matDialoge,error, "error");
+      this.spinner.hide();
+    });
+  }
+
+  Reset(){
+    this.PharmaUser = {};
+    this.stepper.reset();
   }
 
 }

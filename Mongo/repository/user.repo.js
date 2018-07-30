@@ -19,17 +19,26 @@ module.exports = {
     },
     Create: (data) => {
         return new Promise((resolve, reject) => {            
-            var UserModel = UserMapper.InsertUser(data);            
+            var UserModel = UserMapper.InsertUser(data);                      
             Operation.Insert(UserModel).then((result) => {
                 resolve(result);
             }, (error) => {
-                reject(error);
+                reject(error);                
             });
         });
     },
     GetUserByPharma: (pharmaId) => {
         return new Promise((resolve, reject) => {
             Operation.FindAll(User, {"Pharma":pharmaId}).then((result) => {
+                resolve(result);
+            }, (error) => {
+                reject(error);
+            });
+        });
+    },
+    GetUserById: (Id) => {
+        return new Promise((resolve, reject) => {
+            Operation.FindOneWithPopulate(User, {"_id": Id}, 'Pharma').then((result) => {
                 resolve(result);
             }, (error) => {
                 reject(error);

@@ -19,4 +19,8 @@ export class PharmaUserService {
   public Create(data: any) : Observable<any>{
     return this.http.post(this.Url.CreatePharmaUser, data);
   }
+
+  public GetPharmaUserDetail(id: any) : Observable<any>{
+    return this.http.get(this.Url.GetPharmaUserDetail+"?userid="+id);
+  }
 }

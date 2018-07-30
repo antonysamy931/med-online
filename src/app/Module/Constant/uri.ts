@@ -12,4 +12,5 @@ export class Uri {
     public PharmaCount: string = "/api/v1/pharma/pharmascount";
     public PharmaUsers: string = "/api/v1/user/getpharmausers";
     public CreatePharmaUser: string = "/api/v1/user/addpharmauser";
+    public GetPharmaUserDetail: string = "/api/v1/user/getpharmauserbyid";
 }

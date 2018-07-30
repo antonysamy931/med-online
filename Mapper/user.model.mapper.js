@@ -4,8 +4,7 @@ const Guid = require(path.join(__dirname,'../Helpers/GuidBuilder'));
 const User = require(path.join(__dirname,'../Mongo/mongo-schema/user.schema'));
 
 module.exports = {
-    InsertUser : (data) => {
-        console.log(data);
+    InsertUser : (data) => {        
         var UserModel = new User({
             _id: new mongoose.Types.ObjectId,
             Name: { 
