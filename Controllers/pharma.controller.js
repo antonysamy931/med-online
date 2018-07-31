@@ -41,16 +41,12 @@ Router.post('/updatepharma', (req, res, next) => {
 });
 
 Router.post('/deletepharma', (req, res, next) => {
-    var body = req.body;    
-    Repository.Pharma.DeleteAddress(body.AddressId).then((result) => {
-        Repository.Pharma.DeletePharma(body.PharmaId).then((pharmaresult) =>{
-            res.status(200).json(pharmaresult);
-        }, (ex) => {
-            res.status(500).json(ex);
-        })
-    }, (error) => {
-        res.status(500).json(error);
-    })
+    var body = req.body;       
+    Repository.Pharma.DeletePharma(body.PharmaId).then((pharmaresult) =>{
+        res.status(200).json(pharmaresult);
+    }, (ex) => {
+        res.status(500).json(ex);
+    })   
 });
 
 Router.get('/pharmascount', (req, res, next) => {

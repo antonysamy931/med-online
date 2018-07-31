@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { PharmaUserService } from '../Service/PharmaUser/pharma-user.service';
 import { MatDialog, MatStepper } from '../../../node_modules/@angular/material';
+import PharmaUserRole from '../Module/Model/PharmaUserRoles';
 
 @Component({
   selector: 'app-add-pharma-user',
@@ -29,7 +30,7 @@ export class AddPharmaUserComponent extends Common implements OnInit {
   private AccessInfo: FormGroup;
   private AccountInfo: FormGroup;
 
-  private role: any = [{value: "admin", text: "Admin"}, {value: "member", text: "Member"}]
+  private role: any = PharmaUserRole;
   private hide: boolean = true;
   private confirmhide: boolean = true;
 

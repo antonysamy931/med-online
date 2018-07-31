@@ -9,7 +9,7 @@ const logger = require(path.join(__dirname, '../../Helpers/Logger'));
 module.exports = {
     GetPharmas: () => {
         return new Promise((resolve, reject) => {
-            Operation.FindAll(Pharma, {}).then((result) => {
+            Operation.FindAll(Pharma, {"IsDelete":false}).then((result) => {
                 resolve(result);
             },(error) => {
                 logger.Error(error);
@@ -75,7 +75,7 @@ module.exports = {
                 Name: data.Name,
                 Description: data.Description,
                 UpdatedBy: data.UpdatedBy,
-                updatedDate: new Date()
+                UpdatedDate: new Date()
             }).then((result) => {
                 resolve(result);
             }, (error) => {
@@ -94,7 +94,7 @@ module.exports = {
         });        
     }, DeletePharma: (id) => {
         return new Promise((resolve, reject) => {
-            Operation.DeleteOne(Pharma, {_id: id}).then((result) => {
+            Operation.UpdateOne(Pharma, {_id: id}, {"IsActive": false, "IsDelete": true}).then((result) => {
                 resolve(result);
             }, (error) => {
                 reject(error);
@@ -110,7 +110,7 @@ module.exports = {
         });
     }, PharmaCount: () => {
         return new Promise((resolve, reject) => {
-            Operation.Count(Pharma, {}).then((result) => {                
+            Operation.Count(Pharma, {"IsDelete": false}).then((result) => {                
                 resolve(result);
             }, (error) => {                
                 reject(error);

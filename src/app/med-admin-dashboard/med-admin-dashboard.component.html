@@ -1,141 +1,146 @@
-<div class="grid-container">
-  <h1 class="mat-h1">Dashboard</h1>
+<mat-card>
+  <mat-card-content>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+            <nav class="breadcrumb">
+                <a class="breadcrumb-item active">Dashboard</a>
+            </nav>
+        </div>
+      </div>
 
-  <mat-grid-list cols="4" rowHeight="175px">
-    <mat-grid-tile [colspan]="1" [rowspan]="1">      
-      <mat-card class="dashboard-card custom-show-card">
-        <mat-card-header color="primary">
-          <mat-card-title>
-            Pharmas
-            <button mat-icon-button class="more-button" [matMenuTriggerFor]="customermenu" aria-label="Toggle menu">
-              <mat-icon>more_vert</mat-icon>
-            </button>
-            <mat-menu #customermenu="matMenu" xPosition="before">
-              <button mat-menu-item (click)="Redirect('/pharmas')">View</button>              
-            </mat-menu>
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-content class="dashboard-card-content custom-show-card-content">
-          <div>{{PhramaCount}}</div>
-        </mat-card-content>
-      </mat-card>
-    </mat-grid-tile>    
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
-      <mat-card class="dashboard-card custom-show-card">
-        <mat-card-header>
-          <mat-card-title>
-            Completed Orders
-            <button mat-icon-button class="more-button" [matMenuTriggerFor]="completedmenu" aria-label="Toggle menu">
-              <mat-icon>more_vert</mat-icon>
-            </button>
-            <mat-menu #completedmenu="matMenu" xPosition="before">
-              <button mat-menu-item>View</button>              
-            </mat-menu>
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-content class="dashboard-card-content custom-show-card-content">
-          <div>50</div>
-        </mat-card-content>
-      </mat-card>
-    </mat-grid-tile>
-    <mat-grid-tile [colspan]="1" [rowspan]="1">      
-      <mat-card class="dashboard-card custom-show-card">
-        <mat-card-header>
-          <mat-card-title>
-            processing Orders
-            <button mat-icon-button class="more-button" [matMenuTriggerFor]="processingmenu" aria-label="Toggle menu">
-              <mat-icon>more_vert</mat-icon>
-            </button>
-            <mat-menu #processingmenu="matMenu" xPosition="before">
-              <button mat-menu-item>View</button>              
-            </mat-menu>
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-content class="dashboard-card-content custom-show-card-content">
-          <div>40</div>
-        </mat-card-content>
-      </mat-card>
-    </mat-grid-tile>
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
-      <mat-card class="dashboard-card custom-show-card">
-        <mat-card-header>
-          <mat-card-title>
-            Pending Orders
-            <button mat-icon-button class="more-button" [matMenuTriggerFor]="ordermenu" aria-label="Toggle menu">
-              <mat-icon>more_vert</mat-icon>
-            </button>
-            <mat-menu #ordermenu="matMenu" xPosition="before">
-              <button mat-menu-item>View</button>              
-            </mat-menu>
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-content class="dashboard-card-content custom-show-card-content">
-          <div>150</div>
-        </mat-card-content>
-      </mat-card>      
-    </mat-grid-tile>
-  </mat-grid-list>
-
-  <mat-grid-list cols="2" rowHeight="400px">
-    
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
-      <mat-card style="width: 94%;">
-        <mat-card-header>
-            <mat-card-title>              
-              <button mat-icon-button class="more-button" [matMenuTriggerFor]="pie1menu" aria-label="Toggle menu">
-                <mat-icon>more_vert</mat-icon>
-              </button>
-              <mat-menu #pie1menu="matMenu" xPosition="before">
-                <button mat-menu-item>View</button>
-                <button mat-menu-item>Refresh</button>
-              </mat-menu>
-            </mat-card-title>
-          </mat-card-header>
-        <mat-card-content>
-          <app-customer-chart></app-customer-chart>
-        </mat-card-content>
-      </mat-card>
-    </mat-grid-tile>
-    
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
-      <mat-card style="width: 94%;">
+      <div class="row">
+        <div class="col-sm-6 col-md-3 col-lg-3">
+          <mat-card class="custom-show-card custom-inner-card-shadow">
+            <mat-card-header color="primary">
+              <mat-card-title>
+                Pharmas
+                <button mat-icon-button class="more-button" [matMenuTriggerFor]="customermenu" aria-label="Toggle menu">
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #customermenu="matMenu" xPosition="before">
+                  <button mat-menu-item (click)="Redirect('/pharmas')">View</button>              
+                </mat-menu>
+              </mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="dashboard-card-content custom-show-card-content">
+              <div>{{PhramaCount}}</div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div class="col-sm-6 col-md-3 col-lg-3">
+          <mat-card class="custom-inner-card-shadow custom-show-card">
+            <mat-card-header>
+              <mat-card-title>
+                Completed Orders
+                <button mat-icon-button class="more-button" [matMenuTriggerFor]="completedmenu" aria-label="Toggle menu">
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #completedmenu="matMenu" xPosition="before">
+                  <button mat-menu-item>View</button>              
+                </mat-menu>
+              </mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="dashboard-card-content custom-show-card-content">
+              <div>50</div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div class="col-sm-6 col-md-3 col-lg-3">
+          <mat-card class="custom-inner-card-shadow custom-show-card">
+            <mat-card-header>
+              <mat-card-title>
+                processing Orders
+                <button mat-icon-button class="more-button" [matMenuTriggerFor]="processingmenu" aria-label="Toggle menu">
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #processingmenu="matMenu" xPosition="before">
+                  <button mat-menu-item>View</button>              
+                </mat-menu>
+              </mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="dashboard-card-content custom-show-card-content">
+              <div>40</div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div class="col-sm-6 col-md-3 col-lg-3">
+          <mat-card class="custom-inner-card-shadow custom-show-card">
+            <mat-card-header>
+              <mat-card-title>
+                Pending Orders
+                <button mat-icon-button class="more-button" [matMenuTriggerFor]="ordermenu" aria-label="Toggle menu">
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #ordermenu="matMenu" xPosition="before">
+                  <button mat-menu-item>View</button>              
+                </mat-menu>
+              </mat-card-title>
+            </mat-card-header>
+            <mat-card-content class="dashboard-card-content custom-show-card-content">
+              <div>150</div>
+            </mat-card-content>
+          </mat-card> 
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-sm-12 col-md-6 col-lg-6">
+          <mat-card class="custom-inner-card-shadow">
+            <mat-card-header>
+                <mat-card-title>              
+                  <button mat-icon-button class="more-button" [matMenuTriggerFor]="pie1menu" aria-label="Toggle menu">
+                    <mat-icon>more_vert</mat-icon>
+                  </button>
+                  <mat-menu #pie1menu="matMenu" xPosition="before">
+                    <button mat-menu-item>View</button>
+                    <button mat-menu-item>Refresh</button>
+                  </mat-menu>
+                </mat-card-title>
+              </mat-card-header>
+            <mat-card-content>
+              <app-customer-chart></app-customer-chart>
+            </mat-card-content>
+          </mat-card>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-6">
+        <mat-card class="custom-inner-card-shadow">
           <mat-card-header>
             <mat-card-title>              
               <button mat-icon-button class="more-button" [matMenuTriggerFor]="pie2menu" aria-label="Toggle menu">
                 <mat-icon>more_vert</mat-icon>
               </button>
-              <mat-menu #pie2menu="matMenu" xPosition="before">
-                <button mat-menu-item>View</button>
-                <button mat-menu-item (click)="ChartRefresh()">Refresh</button>
-              </mat-menu>
-            </mat-card-title>
-          </mat-card-header>
-        <mat-card-content>
-          <app-customer-chart #customerchart></app-customer-chart>
-        </mat-card-content>
-      </mat-card>
-    </mat-grid-tile>
-
-  </mat-grid-list> 
-
-  <mat-grid-list cols="1" rowHeight="650px">
-    <mat-grid-tile [colspan]="1" [rowspan]="1">
-      <mat-card style="width: 97%;">
-          <mat-card-header>
-            <mat-card-title>              
-              <button mat-icon-button class="more-button" [matMenuTriggerFor]="barmenu" aria-label="Toggle menu">
-                <mat-icon>more_vert</mat-icon>
-              </button>
-              <mat-menu #barmenu="matMenu" xPosition="before">
-                <button mat-menu-item>View</button>
-                <button mat-menu-item onclick="alert(1)">Refresh</button>
-              </mat-menu>
-            </mat-card-title>
-          </mat-card-header>
-        <mat-card-content>
-          <app-sales-chart></app-sales-chart>
-        </mat-card-content>
-      </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
-</div>
+                <mat-menu #pie2menu="matMenu" xPosition="before">
+                  <button mat-menu-item>View</button>
+                  <button mat-menu-item (click)="ChartRefresh()">Refresh</button>
+                </mat-menu>
+              </mat-card-title>
+            </mat-card-header>
+           <mat-card-content>
+            <app-customer-chart #customerchart></app-customer-chart>
+          </mat-card-content>
+        </mat-card>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col-12">   
+          <mat-card class="custom-inner-card-shadow">
+            <mat-card-header>
+              <mat-card-title>              
+                <button mat-icon-button class="more-button" [matMenuTriggerFor]="barmenu" aria-label="Toggle menu">
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #barmenu="matMenu" xPosition="before">
+                  <button mat-menu-item>View</button>
+                  <button mat-menu-item onclick="alert(1)">Refresh</button>
+                </mat-menu>
+              </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <app-sales-chart></app-sales-chart>
+            </mat-card-content>
+          </mat-card>       
+        </div>
+      </div>            
+    </div>
+  </mat-card-content>
+</mat-card>

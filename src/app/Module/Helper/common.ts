@@ -9,6 +9,7 @@ export abstract class Common implements OnInit {
     constructor(public router: Router){
     }
     private auth: AuthService = new AuthService();
+
     ngOnInit(){        
         /*if(!this.auth.IsLoggedIn() 
         && window.location.pathname.split('/').indexOf('reset-password') == -1
@@ -37,6 +38,6 @@ export abstract class Common implements OnInit {
         
         dialogRef.afterClosed().subscribe(result =>{      
         });
-    }    
+    }
 
 }

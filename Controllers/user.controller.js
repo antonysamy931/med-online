@@ -26,10 +26,27 @@ router.get('/getpharmausers', (req, res, next) => {
 router.get('/getpharmauserbyid', (req, res, next) => {    
     Repository.User.GetUserById(req.query.userid).then((result) => {
         res.status(200).json(result);
-    }, (error) =>{        
-        console.log(error);
+    }, (error) =>{                
         res.status(500).json(error);
     });
+});
+
+router.post('/updatepharmauserdetail', (req, res, next) => {    
+    Repository.User.UpdateUserDetail(req.body).then((result) => {
+        res.status(200).json(result);
+    }, (error) =>{
+        console.log(error);
+        res.status(500).json(error);
+    }); 
+});
+
+router.post('/deletepharmauserdetail', (req, res, next) => {    
+    Repository.User.DeleteUserDetail(req.body.userid).then((result) => {
+        res.status(200).json(result);
+    }, (error) =>{
+        console.log(error);
+        res.status(500).json(error);
+    }); 
 });
 
 module.exports = router;

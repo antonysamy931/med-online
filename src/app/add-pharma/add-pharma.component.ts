@@ -4,7 +4,8 @@ import { Router } from '../../../node_modules/@angular/router';
 import { FormControl, Validators, FormGroup, FormBuilder } from '../../../node_modules/@angular/forms';
 import { PharmaService } from '../Service/Pharma/pharma.service';
 import { NgxSpinnerService } from '../../../node_modules/ngx-spinner';
-import { MatStepper } from '../../../node_modules/@angular/material';
+import { MatStepper, MatDialog } from '../../../node_modules/@angular/material';
+import { UtilityService } from '../Service/Utility/utility.service';
 
 @Component({
   selector: 'app-add-pharma',
@@ -17,13 +18,19 @@ export class AddPharmaComponent extends Common implements OnInit {
 
   pharmainfo: FormGroup;
   addressinfo: FormGroup;
+
+  countiresobj: any;
+  countries: any = [];
+  cities: any = [];
  
   @ViewChild(MatStepper) stepper: MatStepper;
 
   constructor(public router: Router, 
     private pharmaService: PharmaService, 
     private spinner: NgxSpinnerService,
-    private formbuilder: FormBuilder) {
+    private formbuilder: FormBuilder,
+    private utilityService: UtilityService,
+    private matDialog: MatDialog) {
     super(router);
   }
 
@@ -41,6 +48,8 @@ export class AddPharmaComponent extends Common implements OnInit {
       country: ['',[Validators.required]],
       zip: ['',[Validators.required]]
     });
+
+    this.LoadCountries();
     super.ngOnInit();
   }
 
@@ -57,6 +66,23 @@ export class AddPharmaComponent extends Common implements OnInit {
   Reset(){    
     this.pharma = {};
     this.stepper.reset();
+  }
+
+  LoadCountries(){
+    this.spinner.show();
+    this.utilityService.GetCountries().subscribe((data) => {
+      this.countiresobj = data;
+      data.forEach(element => {
+        this.countries.push(element.country);
+      });      
+      this.spinner.hide();
+    }, (error) => {
+      this.OpenDialog(this.matDialog, error.message, 'Error');
+    });
+  }
+
+  LoadCities(country){
+    this.cities = this.countiresobj.find(x => x.country == country)
   }
 
 }

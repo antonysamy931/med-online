@@ -1,4 +1,4 @@
-<mat-card style="height: 100vh;">
+<mat-card>
   <mat-card-content>
 
     <div class="row">
@@ -20,20 +20,12 @@
     <mat-card class="custom-inner-card-shadow">        
         <mat-card-content>
             <div class="row">
-                <div class="col-sm-12 col-md-6 col-sm-12">
+                <div class="col-sm-12 col-md-6">
                     <h3 class="font-weight-bold">Pharma detail : <i>{{Pharma.Name}}</i></h3>
                     <hr />
-                </div>
-                <div class="col-sm-12 col-md-6 col-sm-12">
-                    <h3 class="font-weight-bold">Actions</h3>
-                    <hr />
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-12 col-md-6 col-sm-12">
                     <div class="row">
                         <div class="col-6">
-                            <label class="ml-5">Name :</label>
+                            <label class="ml-3">Name :</label>
                         </div>
                         <div class="col-6">
                             <label>{{Pharma.Name}}</label>
@@ -42,7 +34,7 @@
                     <hr/>
                     <div class="row">
                         <div class="col-6">
-                            <label class="ml-5">Description :</label>
+                            <label class="ml-3">Description :</label>
                         </div>
                         <div class="col-6">
                             <label>{{Pharma.Description}}</label>
@@ -51,7 +43,7 @@
                     <hr/>
                     <div class="row">
                         <div class="col-6">
-                            <label class="ml-5">Address1 :</label>
+                            <label class="ml-3">Address1 :</label>
                         </div>
                         <div class="col-6">
                             <label>{{Pharma.Address.Address1}}</label>
@@ -60,7 +52,7 @@
                     <hr/>
                     <div class="row">
                         <div class="col-6">
-                            <label class="ml-5">Address 2 :</label>
+                            <label class="ml-3">Address 2 :</label>
                         </div>
                         <div class="col-6">
                             <label>{{Pharma.Address.Address2}}</label>
@@ -69,7 +61,7 @@
                     <hr/>
                     <div class="row">          
                         <div class="col-6">
-                            <label class="ml-5">City :</label>
+                            <label class="ml-3">City :</label>
                         </div>
                         <div class="col-6">
                             <label>
@@ -80,7 +72,7 @@
                     <hr/>
                     <div class="row">                          
                         <div class="col-6">
-                            <label class="ml-5">State :</label>
+                            <label class="ml-3">State :</label>
                         </div>                
                         <div class="col-6">
                             <label>
@@ -91,7 +83,7 @@
                     <hr/>
                     <div class="row">          
                         <div class="col-6">
-                            <label class="ml-5">Country :</label>
+                            <label class="ml-3">Country :</label>
                         </div>                
                         <div class="col-6">
                             <label>{{Pharma.Address.Country}}</label>
@@ -100,7 +92,7 @@
                     <hr/>
                     <div class="row">                          
                         <div class="col-6">
-                            <label class="ml-5">Zipcode</label>    
+                            <label class="ml-3">Zipcode</label>    
                         </div>                
                         <div class="col-6">
                             <label>{{Pharma.Address.Zipcode}}</label>
@@ -108,97 +100,37 @@
                     </div>
                     <hr/>
                 </div>
-                <div class="col-sm-12 col-md-6 col-sm-12">
+                <div class="col-sm-12 col-md-6">
+                    <h3 class="font-weight-bold">Actions</h3>
+                    <hr />
                     <div class="row">
                         <div class="col-12">
-                            <a routerLink="/pharmas-users/{{PharmaId}}" routerLinkActive="active">View Users</a>
+                            <a class="ml-3" routerLink="/pharmas-users/{{PharmaId}}" routerLinkActive="active">View Users</a>
                             <hr/>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <a routerLink="/add-pharma-user/{{PharmaId}}">Add Users</a>
+                            <a class="ml-3" routerLink="/add-pharma-user/{{PharmaId}}">Add Users</a>
                             <hr/>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <a href="#">View Stock</a>
+                            <a class="ml-3" href="#">View Stock</a>
                             <hr/>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12">
-                            <a href="#">Request Stock</a>
+                            <a class="ml-3" href="#">Request Stock</a>
                             <hr/>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>            
         </mat-card-content>
-    </mat-card>
-    
-            
-    <!-- <mat-card class="custom-inner-card-shadow custom-inner-card">
-      <mat-card-header class="custom-inner-card-header">
-        <mat-card-title class="custom-inner-card-header-text">
-          Pharma detail : <i>{{Pharma.Name}}</i>
-        </mat-card-title>
-      </mat-card-header>
-      <mat-card-content class="custom-inner-card-content">
-        <div class="row">          
-          <div class="col-2">&nbsp;</div>
-          <div class="col-3">Name</div>
-          <div class="col-1">&nbsp;:</div>
-          <div class="col-6">{{Pharma.Name}}</div>
-        </div>
-        <div class="row">          
-            <div class="col-2">&nbsp;</div>
-            <div class="col-3">Description</div>
-            <div class="col-1">&nbsp;:</div>
-            <div class="col-6">{{Pharma.Description}}</div>
-        </div>
-        <div class="row">          
-            <div class="col-2">&nbsp;</div>
-            <div class="col-3">Address Line One</div>
-            <div class="col-1">&nbsp;:</div>
-            <div class="col-6">{{Pharma.Address.Address1}}</div>
-        </div>
-        <div class="row">          
-            <div class="col-2">&nbsp;</div>
-            <div class="col-3">Address Line Two</div>
-            <div class="col-1">&nbsp;:</div>
-            <div class="col-6">{{Pharma.Address.Address2}}</div>
-        </div>
-        <div class="row">          
-            <div class="col-2">&nbsp;</div>
-            <div class="col-3">City</div>
-            <div class="col-1">&nbsp;:</div>
-            <div class="col-6">{{Pharma.Address.City}}</div>
-        </div>
-        <div class="row">          
-            <div class="col-2">&nbsp;</div>
-            <div class="col-3">State</div>
-            <div class="col-1">&nbsp;:</div>
-            <div class="col-6">{{Pharma.Address.State}}</div>
-        </div>
-        <div class="row">          
-            <div class="col-2">&nbsp;</div>
-            <div class="col-3">Country</div>
-            <div class="col-1">&nbsp;:</div>
-            <div class="col-6">{{Pharma.Address.Country}}</div>
-        </div>
-        <div class="row">          
-            <div class="col-2">&nbsp;</div>
-            <div class="col-3">Zipcode</div>
-            <div class="col-1">&nbsp;:</div>
-            <div class="col-6">{{Pharma.Address.Zipcode}}</div>
-        </div>
-      </mat-card-content>
-      <mat-card-actions class="custom-inner-card-actions">
-          <a mat-raised-button color="primary" routerLink="/edit-pharma/{{PharmaId}}">EDIT</a>
-        </mat-card-actions>
-    </mat-card> -->
+    </mat-card>            
   </mat-card-content>
 
 </mat-card>

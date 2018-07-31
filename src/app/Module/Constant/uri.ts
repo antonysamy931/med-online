@@ -13,4 +13,8 @@ export class Uri {
     public PharmaUsers: string = "/api/v1/user/getpharmausers";
     public CreatePharmaUser: string = "/api/v1/user/addpharmauser";
     public GetPharmaUserDetail: string = "/api/v1/user/getpharmauserbyid";
+    public UpdatePharmaUserDetail: string = "/api/v1/user/updatepharmauserdetail";
+    public DeletePharmaUserDetail: string = "/api/v1/user/deletepharmauserdetail";
+
+    public CountryJson: string = "/api/v1/utility/getallcountries";
 }

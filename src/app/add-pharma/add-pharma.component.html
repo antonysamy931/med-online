@@ -1,64 +1,10 @@
-<mat-card style="height: 100vh;">
-  <mat-card-content>
-    <!-- <mat-card class="custom-inner-card-shadow custom-inner-card">
-      <mat-card-header class="custom-inner-card-header">
-        <mat-card-title class="custom-inner-card-header-text">
-          Create Pharma
-        </mat-card-title>
-      </mat-card-header>
-      <mat-card-content class="custom-inner-card-content">
-        <mat-form-field>
-          <input matInput placeholder="Enter Pharmacy name" [formControl]="name"
-            [(ngModel)]="pharma.Name" required />
-          <mat-error *ngIf="name.invalid && name.hasError('required')">Name is required.</mat-error> 
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="Enter Pharmacy description" [formControl]="description"
-            [(ngModel)]="pharma.Description" required/>
-          <mat-error *ngIf="description.invalid && description.hasError('required')">Description is required.</mat-error>
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="Enter Address Line one" [formControl]="address"
-            [(ngModel)]="pharma.Address1" required/>
-          <mat-error *ngIf="address.invalid && address.hasError('required')">Address Line one is required.</mat-error> 
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="Enter Address line two" [(ngModel)]="pharma.Address2" />      
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="Enter City" [formControl]="city"
-            [(ngModel)]="pharma.City" required/>
-          <mat-error *ngIf="city.invalid && city.hasError('required')">City is required.</mat-error> 
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="Enter State" [formControl]="state"
-            [(ngModel)]="pharma.State" required/>
-          <mat-error *ngIf="state.invalid && state.hasError('required')">State is required.</mat-error> 
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="Enter Country" [formControl]="country"
-            [(ngModel)]="pharma.Country" required />
-          <mat-error *ngIf="country.invalid && country.hasError('required')">Country is required.</mat-error> 
-        </mat-form-field>
-        <mat-form-field>
-          <input matInput placeholder="Enter Zip-code" [formControl]="zip"
-            [(ngModel)]="pharma.Zipcode" required />
-          <mat-error *ngIf="zip.invalid && zip.hasError('required')">Zipcode is required.</mat-error> 
-        </mat-form-field>        
-      </mat-card-content>
-      <mat-card-actions class="custom-inner-card-actions">
-        <button mat-raised-button color="primary"
-          [disabled]="name.invalid || description.invalid || address.invalid || city.invalid || state.invalid || country.invalid || zip.invalid"
-          (click)="Save()">SAVE</button>  
-        <button mat-raised-button color="warn" (click)="Reset()">
-          RESET
-        </button>
-      </mat-card-actions>
-    </mat-card> -->
+<mat-card>
+  <mat-card-content>    
     <div class="row">
       <div class="col-12">
           <nav class="breadcrumb">
             <a class="breadcrumb-item" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>            
+            <a class="breadcrumb-item" routerLink="/pharmas" routerLinkActive="active">Pharmas</a>
             <a class="breadcrumb-item active">Create New Pharmacy</a>
           </nav>
       </div>

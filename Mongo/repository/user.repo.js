@@ -29,7 +29,7 @@ module.exports = {
     },
     GetUserByPharma: (pharmaId) => {
         return new Promise((resolve, reject) => {
-            Operation.FindAll(User, {"Pharma":pharmaId}).then((result) => {
+            Operation.FindAll(User, {"Pharma":pharmaId, "IsDelete": false}).then((result) => {
                 resolve(result);
             }, (error) => {
                 reject(error);
@@ -44,5 +44,24 @@ module.exports = {
                 reject(error);
             });
         });
-    }
+    },
+    UpdateUserDetail: (data) => {
+        return new Promise((resolve, reject) => {
+            var UserModel = UserMapper.UpdateUser(data);                  
+            Operation.UpdateOne(User, {"_id": data._id}, UserModel).then((result) => {
+                resolve(result);
+            }, (error) => {
+                reject(error);
+            });
+        });
+    },
+    DeleteUserDetail: (userid) => {
+        return new Promise((resolve, reject) => {             
+            Operation.UpdateOne(User, {"_id": userid}, {"IsActive": false, "IsDelete": true}).then((result) => {
+                resolve(result);
+            }, (error) => {
+                reject(error);
+            });
+        });
+    }    
 }

@@ -1,3 +1,141 @@
-<p>
-  pharma-user-detail works!
-</p>
+<mat-card>
+  <mat-card-content>
+    <div class="row">
+      <div class="col-12">
+          <nav class="breadcrumb">
+              <a class="breadcrumb-item" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+              <a class="breadcrumb-item" routerLink="/pharmas" routerLinkActive="active">Pharmas</a>
+              <a class="breadcrumb-item" routerLink="/view-pharma/{{pharmauser.Pharma._id}}" routerLinkActive="active">Pharma Detail</a>
+              <a class="breadcrumb-item" routerLink="/pharmas-users/{{pharmauser.Pharma._id}}" routerLinkActive="active">Pharma Users</a>
+              <a class="breadcrumb-item active">User Detail</a>
+          </nav>
+        </div>
+      </div>
+
+      <div class="row mb-2">
+        <div class="col-12 text-right">
+          <button mat-raised-button color="primary" routerLink="/edit-pharma-user/{{userid}}" matTooltip="Edit">EDIT</button>
+        </div>
+      </div>
+      
+      <mat-card class="custom-inner-card-shadow">
+        <mat-card-content>
+          <div class="row">
+            <div class="col-sm-12 col-md-6">
+              <h3 class="font-weight-bold">User Detail : <i>{{pharmauser.Name.Last}} {{pharmauser.Name.First}}</i></h3>
+              <hr />
+              <div class="row">
+                <div class="col-6">
+                  <label class="ml-6">Firstname : </label>
+                </div>
+                <div class="col-6">
+                  <label class="ml-6">{{pharmauser.Name.First}}</label>
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-6">
+                  <label class="ml-6">Middlename : </label>
+                </div>
+                <div class="col-6">
+                  <label class="ml-6">{{pharmauser.Name.Middle}}</label>
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-6">
+                  <label class="ml-6">Familyname : </label>
+                </div>
+                <div class="col-6">
+                  <label class="ml-6">{{pharmauser.Name.Family}}</label>
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-6">
+                  <label class="ml-6">Lastname : </label>
+                </div>
+                <div class="col-6">
+                  <label class="ml-6">{{pharmauser.Name.Last}}</label>
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-6">
+                  <label class="ml-6">Mobile Number : </label>
+                </div>
+                <div class="col-6">
+                  <label class="ml-6">{{pharmauser.Phone.Personal}}</label>
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-6">
+                  <label class="ml-6">Home Number : </label>
+                </div>
+                <div class="col-6">
+                  <label class="ml-6">{{pharmauser.Phone.Home}}</label>
+                </div>                
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-6">
+                  <label class="ml-6">Office Number : </label>
+                </div>
+                <div class="col-6">
+                  <label class="ml-6">{{pharmauser.Phone.Office}}</label>
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-6">
+                  <label class="ml-6">Email : </label>
+                </div>
+                <div class="col-6">
+                  <label class="ml-6">{{pharmauser.Email}}</label>
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-6">
+                  <label class="ml-6">Date of Birth : </label>
+                </div>
+                <div class="col-6">
+                  <label class="ml-6">{{pharmauser.Dob}}</label>
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-6">
+                  <label class="ml-6">Role : </label>
+                </div>
+                <div class="col-6">
+                  <label class="ml-6">{{pharmauser.Role}}</label>
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-6">
+                  <label class="ml-6">Pharma : </label>
+                </div>
+                <div class="col-6">
+                  <label class="ml-6">{{pharmauser.Pharma.Description}}, {{pharmauser.Pharma.Name}}</label>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+              <h3 class="font-weight-bold">Actions</h3>
+              <hr />
+              <div class="row">
+                <div class="col-12">
+                  <a class="ml-3" routerLink="/" routerLinkActive="active">Account Detail</a>
+                  <hr />
+                </div>
+              </div>
+            </div>
+          </div>          
+        </mat-card-content>
+      </mat-card>
+
+  </mat-card-content>
+</mat-card>

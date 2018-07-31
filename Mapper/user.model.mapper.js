@@ -27,5 +27,26 @@ module.exports = {
             Pharma: data.Pharma
         });
         return UserModel;
+    },
+    UpdateUser : (data) => {
+        var UserModel = {
+            Name: { 
+                First: data.Name.First,
+                Last: data.Name.Last,  
+                Middle: data.Name.Middle,
+                Family: data.Name.Family      
+            },
+            Email: data.Email, 
+            Dob: data.Dob,   
+            Phone: {
+                Personal: data.Phone.Personal,
+                Home: data.Phone.Home,
+                Office: data.Phone.Office
+            },
+            Role: data.Role,
+            UpdatedBy: data.UpdatedBy,
+            UpdatedDate: new Date()
+        }
+        return UserModel;
     }
 }

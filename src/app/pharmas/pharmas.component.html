@@ -1,4 +1,4 @@
-<mat-card style="height: 100vh;">
+<mat-card>
   <mat-card-content>
     <div class="row">
         <div class="col-12">
@@ -9,7 +9,7 @@
         </div>
       </div>
     
-      <div class="mat-elevation-z8" *ngIf="dataSource">
+      <div class="mat-elevation-z8 table-responsive" *ngIf="dataSource">
         <mat-table class="table" #table [dataSource]="dataSource" matSort aria-label="Elements">
       
           <ng-container matColumnDef="Name">

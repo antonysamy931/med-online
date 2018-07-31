@@ -54,4 +54,12 @@ body {
     /* position: fixed;
     z-index: 1; */
 }
+
+.table-responsive{
+    min-width: 750px !important;
+    overflow: auto !important;
+}
+label, a, h1, h2, h3, h4, h5, h6, span, div{
+    word-break: break-all !important;
+}
 /*https://webgradients.com/*/

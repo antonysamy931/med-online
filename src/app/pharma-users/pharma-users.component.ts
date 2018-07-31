@@ -1,10 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { MatPaginator, MatSort, MatTableDataSource, MatDialog } from '@angular/material';
 import { Common } from '../Module/Helper/common';
 import { Router, ActivatedRoute } from '../../../node_modules/@angular/router';
 import { PharmaService } from '../Service/Pharma/pharma.service';
 import { NgxSpinnerService } from '../../../node_modules/ngx-spinner';
 import { PharmaUserService } from '../Service/PharmaUser/pharma-user.service';
+import { ConfirmBoxComponent } from 'src/app/confirm-box/confirm-box.component';
 
 @Component({
   selector: 'pharma-users',
@@ -23,7 +24,7 @@ export class PharmaUsersComponent extends Common implements OnInit {
 
   constructor(public router: Router, private route: ActivatedRoute,
     private pharmaservice: PharmaService, private spinner: NgxSpinnerService,
-    private pharmauserservice: PharmaUserService){
+    private pharmauserservice: PharmaUserService, private matDialog: MatDialog){
     super(router);
   }
 
@@ -66,8 +67,28 @@ export class PharmaUsersComponent extends Common implements OnInit {
     this.router.navigateByUrl('/edit-pharma-user/'+id);
   }
 
-  Delete(row: any){
-    console.log(row);
+  Delete(row: any){    
+    const dialogRef = this.matDialog.open(ConfirmBoxComponent,
+      {
+          width: "400px",
+          data: {title: "Delete Confirmation", 
+          content: "Are you sure, You want to remove this user?"}
+      });
+      
+      dialogRef.afterClosed().subscribe(result =>{      
+        if(result == "Yes"){          
+          this.spinner.show();
+          this.pharmauserservice.DeletePharmaUser(row._id).subscribe((data) =>{
+            this.spinner.hide();
+            this.LoadPharmaUser();
+          }, (error) => {
+            super.OpenDialog(this.matDialog, error, 'Pharmas');
+            this.spinner.hide();
+          }, () => {
+            this.spinner.hide();
+          });
+        }
+      });
   }
 
   Create(){

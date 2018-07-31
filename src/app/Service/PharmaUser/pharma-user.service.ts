@@ -10,7 +10,7 @@ export class PharmaUserService {
 
   constructor(private http: HttpClient) { }
 
-  public Url: Uri = new Uri();
+  private Url: Uri = new Uri();
 
   public GetPharmaUsers(id) : Observable<any>{
     return this.http.get(this.Url.PharmaUsers+"?pharmaid="+id);
@@ -22,5 +22,13 @@ export class PharmaUserService {
 
   public GetPharmaUserDetail(id: any) : Observable<any>{
     return this.http.get(this.Url.GetPharmaUserDetail+"?userid="+id);
+  }
+
+  public UpdatePharmaUser(data: any) : Observable<any>{
+    return this.http.post(this.Url.UpdatePharmaUserDetail, data);
+  }
+
+  public DeletePharmaUser(userid: any) : Observable<any>{
+    return this.http.post(this.Url.DeletePharmaUserDetail, {userid: userid});
   }
 }
