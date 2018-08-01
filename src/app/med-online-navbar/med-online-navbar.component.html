@@ -16,6 +16,10 @@
       <mat-divider></mat-divider>
       <a mat-list-item routerLink="/pharmas" routerLinkActive="Active">Pharmas</a>
       <mat-divider></mat-divider>
+      <a mat-list-item routerLink="/med-users" routerLinkActive="Active">Users</a>
+      <mat-divider></mat-divider>
+      <a mat-list-item routerLink="/create-med-users" routerLinkActive="Active">Add New User</a>
+      <mat-divider></mat-divider>
       <a mat-list-item routerLink="/operations" routerLinkActive="Active">Operations</a>
     </mat-nav-list>
   </mat-sidenav>
@@ -39,6 +43,15 @@
 
       <div *ngIf="!(isHandset$ | async)">
         <button class="DisplayUserInfo" mat-button routerLink="/dashboard">Dashboard</button>
+        
+        <button class="DisplayUserInfo" mat-button [matMenuTriggerFor]="usermenu">Administration
+          <mat-icon>expand_more</mat-icon>
+        </button>
+        <mat-menu #usermenu [overlapTrigger]="false" yPosition="below">
+          <button mat-menu-item routerLink="/med-users">Users</button>
+          <button mat-menu-item routerLink="/create-med-users">Create User</button>        
+        </mat-menu>
+
         <button class="DisplayUserInfo" mat-button [matMenuTriggerFor]="parmamenu">Pharma
           <mat-icon>expand_more</mat-icon>
         </button>

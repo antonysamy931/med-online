@@ -27,7 +27,8 @@ import {
   MatDialogModule,
   MatTooltipModule,
   MatStepperModule,
-  MatDatepickerModule  
+  MatDatepickerModule,
+  MatAutocompleteModule
 } from '@angular/material';
 
 @NgModule({
@@ -59,7 +60,8 @@ import {
     MatStepperModule,
     MatDatepickerModule,
     CdkTableModule,
-    CdkTreeModule
+    CdkTreeModule,
+    MatAutocompleteModule
   ],
   declarations: []
 })

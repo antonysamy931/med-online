@@ -63,5 +63,14 @@ module.exports = {
                 reject(error);
             });
         });
+    },
+    GetAllMedUsers: () => {
+        return new Promise((resolve, reject) => {
+            Operation.FindAll(User, {"IsActive": true, "IsDelete": false, "Role": {$in:["management","pharmacist","operation"]}}).then((result) => {
+                resolve(result);
+            }, (error) => {
+                reject(error);
+            });
+        });
     }    
 }

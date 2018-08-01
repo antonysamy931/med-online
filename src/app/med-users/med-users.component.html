@@ -1,0 +1,71 @@
+<mat-card style="height: 100vh;">
+  <mat-card-content>
+    <div class="row">
+      <div class="col-12">
+        <nav class="breadcrumb">
+          <a class="breadcrumb-item" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>                      
+          <a class="breadcrumb-item active">Users</a>
+        </nav>
+      </div>
+    </div>   
+    
+    <div class="mat-elevation-z8 table-responsive" *ngIf="dataSource">
+      <mat-table class="table" #table [dataSource]="dataSource" matSort aria-label="Elements">
+            
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+          <mat-cell *matCellDef="let row">{{row.Name.First}}, {{row.Name.Last}}</mat-cell>
+        </ng-container>
+        
+        <ng-container matColumnDef="dob">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Date Of Brith</mat-header-cell>
+          <mat-cell *matCellDef="let row">{{row.Dob}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="email">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
+          <mat-cell *matCellDef="let row">{{row.Email}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="role">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>Role</mat-header-cell>
+          <mat-cell *matCellDef="let row">{{row.Role}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <button class="ml-2" mat-icon-button color="primary" (click)="View(row._id)"
+              matTooltip="View Detail">
+                <mat-icon>visibility</mat-icon>
+            </button>          
+            <button mat-icon-button color="primary" (click)="Edit(row._id)"
+              matTooltip="Edit">
+                <mat-icon>edit</mat-icon>
+            </button>         
+            <button mat-icon-button color="primary" (click)="Delete(row)"
+              matTooltip="Delete">
+                <mat-icon>delete</mat-icon>
+            </button>  
+          </mat-cell>
+        </ng-container>
+        
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    
+      <mat-paginator #paginator
+        [length]="dataSource.data.length"
+        [pageIndex]="0"
+        [pageSize]="10"
+        [pageSizeOptions]="[10, 25, 50, 100, 250]">
+      </mat-paginator>
+    </div>
+    <div style="width: 100%; text-align: right; padding-top: 2%;">
+      <button mat-mini-fab color="primary" (click)="Create()" 
+        matTooltip="Create" style="width:50px; height: 50px;">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div> 
+  </mat-card-content>
+</mat-card>

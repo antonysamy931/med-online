@@ -1,46 +1,42 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Common } from '../Module/Helper/common';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { NgxSpinnerService } from 'ngx-spinner';
-import { PharmaUserService } from '../Service/PharmaUser/pharma-user.service';
+import { Router, ActivatedRoute } from '../../../node_modules/@angular/router';
+import { FormBuilder, FormGroup, Validators } from '../../../node_modules/@angular/forms';
+import { NgxSpinnerService } from '../../../node_modules/ngx-spinner';
 import { MatDialog, MatStepper } from '../../../node_modules/@angular/material';
-import PharmaUserRole from '../Module/Model/PharmaUserRoles';
+import { MedUserService } from '../Service/MedUser/meduser.service';
+import MedUserRole from '../Module/Model/MedUserRoles';
 
 @Component({
-  selector: 'app-add-pharma-user',
-  templateUrl: './add-pharma-user.component.html',
-  styleUrls: ['./add-pharma-user.component.css']
+  selector: 'app-add-med-user',
+  templateUrl: './add-med-user.component.html',
+  styleUrls: ['./add-med-user.component.css']
 })
-export class AddPharmaUserComponent extends Common implements OnInit {
+export class AddMedUserComponent extends Common implements OnInit {
 
   constructor(public router: Router, 
     private activatedRoute: ActivatedRoute,
     private formBuilder: FormBuilder, 
-    private spinner: NgxSpinnerService, 
-    private pharmaUserService: PharmaUserService,
-    private matDialoge: MatDialog) {
-    super(router);
-  }
+    private spinner: NgxSpinnerService,
+    private matdialog: MatDialog,
+    private meduserservice: MedUserService) {
+      super(router);
+    }
 
-  private PharmaId: any;
-  private PharmaUser: any = {};
+  private User: any = {};
+
   private PersonalInfo: FormGroup;
   private ContactInfo: FormGroup;
   private AccessInfo: FormGroup;
   private AccountInfo: FormGroup;
-
-  private role: any = PharmaUserRole;
+  
+  private role: any = MedUserRole;
   private hide: boolean = true;
   private confirmhide: boolean = true;
 
   @ViewChild(MatStepper) stepper: MatStepper;
 
   ngOnInit() {
-    this.activatedRoute.params.subscribe((param) => {
-      this.PharmaId = param["id"];
-    });
-
     this.PersonalInfo = this.formBuilder.group({
       FirstName: ['',[Validators.required]],
       LastName: ['', [Validators.required]],
@@ -51,7 +47,9 @@ export class AddPharmaUserComponent extends Common implements OnInit {
 
     this.ContactInfo = this.formBuilder.group({
       Email: ['', [Validators.required, Validators.email]],
-      PersonalNumber: ['', [Validators.required]]
+      PersonalNumber: ['', [Validators.required]],
+      HomeNumber: ['', []],
+      OfficeNumber: ['', []]
     });
 
     this.AccessInfo = this.formBuilder.group({
@@ -64,23 +62,21 @@ export class AddPharmaUserComponent extends Common implements OnInit {
       ConfirmPassword: ['', [Validators.required]]
     });
 
-    this.PharmaUser.DOB = "";
+    this.User.DOB = "";
   }
 
-  Save(){    
+  Save(){
     this.spinner.show();
-    this.PharmaUser.Pharma = this.PharmaId;
-    this.pharmaUserService.Create(this.PharmaUser).subscribe((data) => {
+    this.meduserservice.Create(this.User).subscribe((data) => {
+      this.router.navigateByUrl('/med-users');
       this.spinner.hide();
-      this.router.navigateByUrl(`/view-pharma/${this.PharmaId}`);
     }, (error) => {
-      this.OpenDialog(this.matDialoge,error, "error");
       this.spinner.hide();
-    });
+    })
   }
 
   Reset(){
-    this.PharmaUser = {};
+    this.User = {};
     this.stepper.reset();
   }
 

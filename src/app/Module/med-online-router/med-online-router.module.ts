@@ -18,6 +18,8 @@ import { OnlyLoggedInUser } from '../med-online-guards/LoggedInGuards';
 import { AddPharmaUserComponent } from '../../add-pharma-user/add-pharma-user.component';
 import { UpdatePharmaUserComponent } from '../../update-pharma-user/update-pharma-user.component';
 import { PharmaUserDetailComponent } from '../../pharma-user-detail/pharma-user-detail.component';
+import { MedUsersComponent } from '../../med-users/med-users.component';
+import { AddMedUserComponent } from '../../add-med-user/add-med-user.component';
 
 const pageRoutes: Routes = [
   {path: '', redirectTo:'/dashboard', pathMatch: 'full'},
@@ -36,7 +38,9 @@ const pageRoutes: Routes = [
   {path: 'reset-password/:data', component: ResetPasswordComponent},
   {path: 'add-pharma-user/:id', component: AddPharmaUserComponent, canActivate: [OnlyLoggedInUser]},
   {path: 'edit-pharma-user/:id', component: UpdatePharmaUserComponent, canActivate: [OnlyLoggedInUser]},
-  {path: 'pharma-user-detail/:id', component: PharmaUserDetailComponent, canActivate: [OnlyLoggedInUser]}  
+  {path: 'pharma-user-detail/:id', component: PharmaUserDetailComponent, canActivate: [OnlyLoggedInUser]},
+  {path: 'med-users', component: MedUsersComponent, canActivate: [OnlyLoggedInUser]},
+  {path: 'create-med-users', component: AddMedUserComponent, canActivate: [OnlyLoggedInUser]}
 ]
 
 @NgModule({

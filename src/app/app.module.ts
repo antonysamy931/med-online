@@ -35,6 +35,8 @@ import { ConfirmBoxComponent } from './confirm-box/confirm-box.component';
 import { AddPharmaUserComponent } from './add-pharma-user/add-pharma-user.component';
 import { UpdatePharmaUserComponent } from './update-pharma-user/update-pharma-user.component';
 import { PharmaUserDetailComponent } from './pharma-user-detail/pharma-user-detail.component';
+import { MedUsersComponent } from './med-users/med-users.component';
+import { AddMedUserComponent } from './add-med-user/add-med-user.component';
 
 @NgModule({
   entryComponents:[
@@ -66,7 +68,9 @@ import { PharmaUserDetailComponent } from './pharma-user-detail/pharma-user-deta
     ConfirmBoxComponent,
     AddPharmaUserComponent,
     UpdatePharmaUserComponent,
-    PharmaUserDetailComponent    
+    PharmaUserDetailComponent,
+    MedUsersComponent,
+    AddMedUserComponent    
   ],
   imports: [
     BrowserModule,  

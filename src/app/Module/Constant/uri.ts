@@ -17,4 +17,6 @@ export class Uri {
     public DeletePharmaUserDetail: string = "/api/v1/user/deletepharmauserdetail";
 
     public CountryJson: string = "/api/v1/utility/getallcountries";
+
+    public MedUsers: string = "/api/v1/user/getmedusers";
 }

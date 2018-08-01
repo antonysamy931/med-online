@@ -6,6 +6,8 @@ import { PharmaService } from '../Service/Pharma/pharma.service';
 import { NgxSpinnerService } from '../../../node_modules/ngx-spinner';
 import { MatStepper, MatDialog } from '../../../node_modules/@angular/material';
 import { UtilityService } from '../Service/Utility/utility.service';
+import { Observable } from '../../../node_modules/rxjs';
+import { startWith, map } from '../../../node_modules/rxjs/operators';
 
 @Component({
   selector: 'app-add-pharma',
@@ -21,6 +23,7 @@ export class AddPharmaComponent extends Common implements OnInit {
 
   countiresobj: any;
   countries: any = [];
+  countriesFilter: Observable<any[]>;
   cities: any = [];
  
   @ViewChild(MatStepper) stepper: MatStepper;
@@ -78,11 +81,24 @@ export class AddPharmaComponent extends Common implements OnInit {
       this.spinner.hide();
     }, (error) => {
       this.OpenDialog(this.matDialog, error.message, 'Error');
+    }, () => {
+      this.countriesFilter = this.addressinfo.controls.country.valueChanges
+        .pipe(
+          startWith<string | any>(''),
+          map(value => typeof value === 'string' ? value : value.country),
+          map(name => name ? this._filter(name) : this.countries.slice())
+        );
     });
   }
 
   LoadCities(country){
     this.cities = this.countiresobj.find(x => x.country == country)
+  }
+
+  private _filter(country: string): any[] {
+    const filterValue = country.toLowerCase();
+
+    return this.countries.filter(option => option.toLowerCase().indexOf(filterValue) === 0);
   }
 
 }
