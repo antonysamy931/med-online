@@ -14,7 +14,11 @@ router.use(function(req, res, next){
         && !req.path.includes('resetpassword')){
         let authorization = req.header('Authorization');
         if(!authorization){
-            res.status(401).json('UnAuthorized User.');
+            if(req.query["from"] == "shoppingcart"){
+                next();
+            }else{
+                res.status(401).json('UnAuthorized User.');
+            }
         }else{
             let token = authorization.split(' ')[1];          
             var data = jwt.verify(token, ApplicationSetting["jwt-key"]); 

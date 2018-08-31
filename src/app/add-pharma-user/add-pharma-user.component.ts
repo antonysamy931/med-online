@@ -51,7 +51,9 @@ export class AddPharmaUserComponent extends Common implements OnInit {
 
     this.ContactInfo = this.formBuilder.group({
       Email: ['', [Validators.required, Validators.email]],
-      PersonalNumber: ['', [Validators.required]]
+      PersonalNumber: ['', [Validators.required]],
+      HomeNumber: ['',[]],
+      OfficeNumber: ['',[]]
     });
 
     this.AccessInfo = this.formBuilder.group({
