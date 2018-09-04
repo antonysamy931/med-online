@@ -20,6 +20,7 @@ import { UpdatePharmaUserComponent } from '../../update-pharma-user/update-pharm
 import { PharmaUserDetailComponent } from '../../pharma-user-detail/pharma-user-detail.component';
 import { MedUsersComponent } from '../../med-users/med-users.component';
 import { AddMedUserComponent } from '../../add-med-user/add-med-user.component';
+import { MedicineUploadComponent } from '../../medicine-upload/medicine-upload.component';
 
 const pageRoutes: Routes = [
   {path: '', redirectTo:'/dashboard', pathMatch: 'full'},
@@ -40,7 +41,8 @@ const pageRoutes: Routes = [
   {path: 'edit-pharma-user/:id', component: UpdatePharmaUserComponent, canActivate: [OnlyLoggedInUser]},
   {path: 'pharma-user-detail/:id', component: PharmaUserDetailComponent, canActivate: [OnlyLoggedInUser]},
   {path: 'med-users', component: MedUsersComponent, canActivate: [OnlyLoggedInUser]},
-  {path: 'create-med-users', component: AddMedUserComponent, canActivate: [OnlyLoggedInUser]}
+  {path: 'create-med-users', component: AddMedUserComponent, canActivate: [OnlyLoggedInUser]},
+  {path: 'import-medicine', component: MedicineUploadComponent, canActivate: [OnlyLoggedInUser]}  
 ]
 
 @NgModule({

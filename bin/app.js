@@ -22,10 +22,11 @@ const AccountController = require(path.join(__dirname,'../Controllers/account.co
 const PharmaController = require(path.join(__dirname,'../Controllers/pharma.controller'));
 const UserController = require(path.join(__dirname, '../Controllers/user.controller'));
 const UtilityController = require(path.join(__dirname, '../Controllers/utility.controller'));
+const MedicineController = require(path.join(__dirname,'../Controllers/medicine.controller'));
 
 // Parsers
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true}));
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(fileUpload());
 app.use(function(req, res, next) { //allow cross origin requests
         res.header("Access-Control-Allow-Origin", "*");
@@ -52,6 +53,7 @@ app.use('/api/v1/account', AccountController);
 app.use('/api/v1/pharma', PharmaController);
 app.use('/api/v1/user', UserController);
 app.use('/api/v1/utility', UtilityController);
+app.use('/api/v1/medicine', MedicineController);
 // Send all other requests to the Angular app
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../dist/med-online/index.html'));

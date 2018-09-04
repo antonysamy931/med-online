@@ -37,6 +37,7 @@ import { UpdatePharmaUserComponent } from './update-pharma-user/update-pharma-us
 import { PharmaUserDetailComponent } from './pharma-user-detail/pharma-user-detail.component';
 import { MedUsersComponent } from './med-users/med-users.component';
 import { AddMedUserComponent } from './add-med-user/add-med-user.component';
+import { MedicineUploadComponent } from './medicine-upload/medicine-upload.component';
 
 @NgModule({
   entryComponents:[
@@ -70,7 +71,8 @@ import { AddMedUserComponent } from './add-med-user/add-med-user.component';
     UpdatePharmaUserComponent,
     PharmaUserDetailComponent,
     MedUsersComponent,
-    AddMedUserComponent    
+    AddMedUserComponent,
+    MedicineUploadComponent    
   ],
   imports: [
     BrowserModule,  

@@ -19,4 +19,6 @@ export class Uri {
     public CountryJson: string = "/api/v1/utility/getallcountries";
 
     public MedUsers: string = "/api/v1/user/getmedusers";
+
+    public UploadMedicine: string = "/api/v1/medicine/upload-medicine";
 }

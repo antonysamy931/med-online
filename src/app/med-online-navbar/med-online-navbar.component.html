@@ -18,7 +18,7 @@
       <mat-divider></mat-divider>
       <a mat-list-item routerLink="/med-users" routerLinkActive="Active">Users</a>
       <mat-divider></mat-divider>
-      <a mat-list-item routerLink="/create-med-users" routerLinkActive="Active">Add New User</a>
+      <a mat-list-item routerLink="/import-medicine" routerLinkActive="Active">Import Medicines</a>
       <mat-divider></mat-divider>
       <a mat-list-item routerLink="/operations" routerLinkActive="Active">Operations</a>
     </mat-nav-list>
@@ -49,7 +49,7 @@
         </button>
         <mat-menu #usermenu [overlapTrigger]="false" yPosition="below">
           <button mat-menu-item routerLink="/med-users">Users</button>
-          <button mat-menu-item routerLink="/create-med-users">Create User</button>        
+          <button mat-menu-item routerLink="/import-medicine">Import Medicines</button>        
         </mat-menu>
 
         <button class="DisplayUserInfo" mat-button [matMenuTriggerFor]="parmamenu">Pharma

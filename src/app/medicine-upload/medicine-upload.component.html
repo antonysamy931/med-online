@@ -1,0 +1,59 @@
+<mat-card>
+  <mat-card-content>
+
+    <div class="row">
+        <div class="col-12">
+            <nav class="breadcrumb">
+                <a class="breadcrumb-item" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>                
+                <a class="breadcrumb-item active">Import Medicines</a>
+            </nav>
+        </div>
+    </div>    
+
+    <mat-card class="custom-inner-card-shadow">        
+        <mat-card-content>
+            <div class="row">
+              <div class="col-sm-12">
+                <input type="file" accept=".csv" (change)="HandleFile($event)"/>
+              </div>                
+            </div> 
+            <br />
+            <div class="row" *ngIf="FileChanged && MedicineRecords.length > 0" >
+              <div class="col-12">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>No.</th>
+                      <th>Name</th>
+                      <th>Quantity</th>
+                      <th>Type</th>
+                      <th>Package Unit</th>
+                      <th>Price Per Unit</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of MedicineRecords; let i = index;" >
+                      <td>{{i + 1}}</td>
+                      <td>{{item.Name}}</td>
+                      <td>{{item.Quantity}}</td>
+                      <td>{{item.Type}}</td>
+                      <td>{{item.PackageUnit}}</td>
+                      <td>{{item.PricePerUnit}}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>    
+            <br/>
+            <div class="row" *ngIf="FileChanged && MedicineRecords.length > 0">
+              <div class="col-12">
+                <button type="button" mat-raised-button color="primary" (click)="Upload()">
+                  Upload
+                </button>
+              </div>
+            </div>       
+        </mat-card-content>
+    </mat-card>            
+  </mat-card-content>
+
+</mat-card>
