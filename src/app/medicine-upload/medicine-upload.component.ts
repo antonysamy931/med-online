@@ -19,6 +19,7 @@ export class MedicineUploadComponent extends Common implements OnInit {
   Uploaded: boolean = false;
   FileChanged: boolean = false;
   MedicineRecords: any = [];
+  MedicineUploadRecords: any = [];
 
   ngOnInit() {
     super.ngOnInit();
@@ -37,8 +38,13 @@ export class MedicineUploadComponent extends Common implements OnInit {
   }
 
   Upload(){
-    this.medicineService.UploadMedicine(this.MedicineRecords).subscribe((data) =>{
-      console.log(data);
+    this.spinner.show();
+    this.medicineService.UploadMedicine(this.MedicineRecords).subscribe((data) =>{      
+      this.Uploaded = true;
+      this.FileChanged = false;
+      this.MedicineRecords = [];
+      this.MedicineUploadRecords = data;
+      this.spinner.hide();
     }, (error) => {
       console.log(error);
     });

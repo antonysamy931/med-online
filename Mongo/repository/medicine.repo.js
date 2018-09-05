@@ -9,14 +9,24 @@ module.exports = {
     AddOrUpdate: (record) => {
         return new Promise((resolve, reject) => {
             Operation.FindOne(Medicine,
-                {Name: record.Name, Quantity: record.Quantity, Type: record.Type}).then((result) => {
-                    var Model = MedicineMapper.InsertMedicineModel(record);
-                    Operation.Insert(Model).then((insResult) =>{
-                        resolve(insResult);
-                    }, (insError) => {
-                        logger.Error(insError);
-                        reject(insError);
-                    });
+                {Name: record.Name, Quantity: record.Quantity, Type: record.Type}).then((result) => {                    
+                    if(result){
+                        Operation.UpdateOne(Medicine, {_id: result._id}, 
+                            MedicineMapper.UpdateMedicineModel(record, result._id)).then((updateresult) => {
+                            resolve({Action: "Update", Response : updateresult});
+                        }, (updateerror) => {
+                            logger.Error(updateerror);                            
+                            reject({Action: "Update", Response : updateerror});
+                        });
+                    } else {
+                        var Model = MedicineMapper.InsertMedicineModel(record);
+                        Operation.Insert(Model).then((insResult) =>{                            
+                            resolve({Action: "Insert", Response : insResult});                      
+                        }, (insError) => {
+                            logger.Error(insError);                            
+                            reject({Action: "Insert", Response : insError});
+                        });   
+                    }                 
             }, (error) => {
                 logger.Error(error);
                 reject(error);
